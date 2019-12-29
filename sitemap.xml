@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/</loc>
+    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/research/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/teaching/</loc>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/blog/</loc>
+    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/tags/math/</loc>
+    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/tags/physics/</loc>
+    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/blog/rmt-basics/</loc>
+    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/tags/</loc>
+    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/blog/a-new-site-using-hugo/</loc>
+    <lastmod>2019-09-21T15:09:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/tags/hugo/</loc>
+    <lastmod>2019-09-21T15:09:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/tags/site/</loc>
+    <lastmod>2019-09-21T15:09:07-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.physics.rutgers.edu/~zabalo/categories/</loc>
+  </url>
+  
+</urlset>

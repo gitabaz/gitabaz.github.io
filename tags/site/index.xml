@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>site on Aidan Zabalo</title>
+    <link>https://www.physics.rutgers.edu/~zabalo/tags/site/</link>
+    <description>Recent content in site on Aidan Zabalo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 21 Sep 2019 15:09:07 -0400</lastBuildDate>
+    
+	<atom:link href="https://www.physics.rutgers.edu/~zabalo/tags/site/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A New Site Using Hugo</title>
+      <link>https://www.physics.rutgers.edu/~zabalo/blog/a-new-site-using-hugo/</link>
+      <pubDate>Sat, 21 Sep 2019 15:09:07 -0400</pubDate>
+      
+      <guid>https://www.physics.rutgers.edu/~zabalo/blog/a-new-site-using-hugo/</guid>
+      <description>I have just finished setting up a basic site using Hugo, a static site generator written in Go. Being a static site generator, Hugo builds pages when you create content instead of dynamically, when a vistor requests a page. This leads to fast and secure pages that can be hosted anywhere. I stumbled upon Hugo while browsing a random users github pages (I can&amp;rsquo;t remember the name) and the concept seemed ideal for my purposes: A website easy to setup, use, and manage.</description>
+    </item>
+    
+  </channel>
+</rss>

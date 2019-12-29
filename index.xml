@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Aidan Zabalo</title>
+    <link>https://www.physics.rutgers.edu/~zabalo/</link>
+    <description>Recent content in Home on Aidan Zabalo</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Oct 2019 17:41:16 -0400</lastBuildDate>
+    
+	<atom:link href="https://www.physics.rutgers.edu/~zabalo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Research</title>
+      <link>https://www.physics.rutgers.edu/~zabalo/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.physics.rutgers.edu/~zabalo/research/</guid>
+      <description>Research I am interested in the application of novel analytical and numerical techniques to study the physics of strongly correlated electrons in condensed matter systems.
+I am currently working on the projects described below.
+Random Unitary Circuits: Measurement transition Our current research lies at the intersection of quantum computation and fundamental many-body physics. The connection between the two is made through the use of the random quantum circuit model. Such a circuit is the quantum analogue for the operation of a classical computer: a collection of quantum bits is prepared in an initial state and evolves over time through the application of quantum logic gates.</description>
+    </item>
+    
+    <item>
+      <title>Teaching</title>
+      <link>https://www.physics.rutgers.edu/~zabalo/teaching/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.physics.rutgers.edu/~zabalo/teaching/</guid>
+      <description>Teaching Current: Fall 2019 - N/A Past: Summer 2019 - General Physics Lab II 206
+Spring 2019 - Analytical Physics II Honors 124H
+Fall 2018 - Analytical Physics I Honors 123H
+Summer 2018 - General Physics Lab I 205
+Spring 2018 - General Physics Lab II 206
+Fall 2017 - Analytical Physics I 123
+Summer 2017 - General Physics Lab II 206</description>
+    </item>
+    
+    <item>
+      <title>Random Matrix Theory - Basics</title>
+      <link>https://www.physics.rutgers.edu/~zabalo/blog/rmt-basics/</link>
+      <pubDate>Tue, 08 Oct 2019 17:41:16 -0400</pubDate>
+      
+      <guid>https://www.physics.rutgers.edu/~zabalo/blog/rmt-basics/</guid>
+      <description>Introduction The first time I heard the term Random Matrix Theory (RMT) was at the Wednesday physics colloquium given by one of the faculty members at Rutgers. Immediately, I was intrigued by the idea of bringing together two of the most useful concepts in math: statistics and linear algebra. It wasn&amp;rsquo;t obvious to me what we could learn from studying random matrices but the more research I did into the field, the more I realized that their usage was spreading across the different branches of science.</description>
+    </item>
+    
+    <item>
+      <title>A New Site Using Hugo</title>
+      <link>https://www.physics.rutgers.edu/~zabalo/blog/a-new-site-using-hugo/</link>
+      <pubDate>Sat, 21 Sep 2019 15:09:07 -0400</pubDate>
+      
+      <guid>https://www.physics.rutgers.edu/~zabalo/blog/a-new-site-using-hugo/</guid>
+      <description>I have just finished setting up a basic site using Hugo, a static site generator written in Go. Being a static site generator, Hugo builds pages when you create content instead of dynamically, when a vistor requests a page. This leads to fast and secure pages that can be hosted anywhere. I stumbled upon Hugo while browsing a random users github pages (I can&amp;rsquo;t remember the name) and the concept seemed ideal for my purposes: A website easy to setup, use, and manage.</description>
+    </item>
+    
+  </channel>
+</rss>
