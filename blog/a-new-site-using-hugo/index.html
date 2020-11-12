@@ -32,79 +32,60 @@
 <div class="content">
 	<h1>A New Site Using Hugo</h1>
 	<hr>
-	
-
-<p>I have just finished setting up a basic site using <a href="https://gohugo.io">Hugo</a>, a static site generator written in Go. Being a static site generator, Hugo builds pages when you create content instead of dynamically, when a vistor requests a page. This leads to fast and secure pages that can be hosted anywhere.
+	<p>I have just finished setting up a basic site using <a href="https://gohugo.io">Hugo</a>, a static site generator written in Go. Being a static site generator, Hugo builds pages when you create content instead of dynamically, when a vistor requests a page. This leads to fast and secure pages that can be hosted anywhere.
 I stumbled upon Hugo while browsing a random users github pages (I can&rsquo;t remember the name) and the concept seemed ideal for my purposes: A website easy to setup, use, and manage. Hugo advertises to do this and much more, offering many features and possibilities for customization. I am very new to the Hugo universe so all of its features remain to be seen but so far I have been impressed with the ease of setup which I detail below.</p>
-
 <h2 id="setting-up-my-first-site">Setting up my first site</h2>
-
 <p>To setup Hugo, I basically followed the Install Hugo and Quick Start guides found <a href="https://gohugo.io/getting-started/">here</a>.</p>
-
 <p>I am currently running Ubuntu 19.04 so to install Hugo I simply download the .deb file from the <a href="https://github.com/gohugoio/hugo/releases">Hugo github</a> and got the latest version (currently v0.58.3). Once that was done I made a directory where I would store my Hugo websites and initiated a Hugo site.</p>
-
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir ~/sites
 hugo new site &lt;SITENAME&gt;</code></pre></td></tr></table>
 </div>
 </div>
-
 <p>The next step on the guide was to install a theme. I chose to go with the basic <a href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a>. In order to install, I initiated a git repository in my <em>~/sites/&lt;SITENAME&gt;</em> directory and added the theme as a <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">submodule</a> in the <em>themes/ananke</em> directory. The submodule is a great way to include a third party project into your own project. Once the theme has been downloaded, tell hugo to use the theme by adding it to the <em>config.toml</em> file.</p>
-
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd &lt;SITENAME&gt;
 git init
 git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
 echo <span style="color:#e6db74">&#39;theme = &#34;ananke&#34;&#39;</span> &gt;&gt; config.toml</code></pre></td></tr></table>
 </div>
 </div>
-
 <p>The next step is to add some content. This is easily done by running</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>hugo new posts/&lt;POST-TITLE&gt;.md</code></pre></div>
-
 <p>Once the post is created, it&rsquo;ll have some default content that includes the post title, date created, and marks it as a draft. This can easily be edited using any text editor to include the content you like.
 The last thing to do before testing is to open up <em>config.toml</em> and edit the site name and url.</p>
-
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
 </span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;">
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">baseURL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://example.org/&#34;</span>
 languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;en-us&#34;</span>
 title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;My New Hugo Site&#34;</span>
 theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ananke&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-
 <p>The site can now be viewed on a local Hugo server before publishing.</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>hugo server -D</code></pre></div>
-
-<p>The <em>-D</em> in the command indicates that drafts should be published. The site can be viewed at <a href="http://localhost:1313/">http://localhost:1313/</a>.</p>
-
+<p>The <em>-D</em> in the command indicates that drafts should be published. The site can be viewed at http://localhost:1313/.</p>
 <p>That&rsquo;s it! The Hugo site is basically complete. To push it to a live server, make sure any post that should be published is not marked as a draft and then run</p>
-
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>hugo</code></pre></div>
-
 <p>to build the static pages. When it&rsquo;s complete, the ouput to be uploaded to the live server will be in the <em>public</em> folder.</p>
-
 <p>While trying to customize my own site, I found the Hugo docs to be a bit confusing. Browsing other sources on the web, I came across a <a href="https://www.sarasoueidan.com/blog/jekyll-ghpages-to-hugo-netlify/">blog</a> which was extremely helpful. The blog goes over most of the basics and is a quick way to familiarize yourself with the Hugo ecosystem.</p>
 
 </div>
