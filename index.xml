@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Aidan Zabalo</title>
@@ -17,7 +17,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gitabaz.github.io/research/</guid>
-      <description>Research  I am interested in the application of novel analytical and numerical techniques to study the physics of strongly correlated electrons in condensed matter systems.
+      <description>Research I am interested in the application of novel analytical and numerical techniques to study the physics of strongly correlated electrons in condensed matter systems.
 I am currently working on the projects described below.
 Random Unitary Circuits: Measurement transition Our current research lies at the intersection of quantum computation and fundamental many-body physics. The connection between the two is made through the use of the random quantum circuit model. Such a circuit is the quantum analogue for the operation of a classical computer: a collection of quantum bits is prepared in an initial state and evolves over time through the application of quantum logic gates.</description>
     </item>
@@ -28,7 +28,7 @@ Random Unitary Circuits: Measurement transition Our current research lies at the
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gitabaz.github.io/teaching/</guid>
-      <description>Teaching  Current: Fall 2019 - N/A  Past: Summer 2019 - General Physics Lab II 206
+      <description>Teaching Current: Fall 2019 - N/A Past: Summer 2019 - General Physics Lab II 206
 Spring 2019 - Analytical Physics II Honors 124H
 Fall 2018 - Analytical Physics I Honors 123H
 Summer 2018 - General Physics Lab I 205

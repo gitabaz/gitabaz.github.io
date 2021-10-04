@@ -48,24 +48,37 @@ MathJax.Hub.Config({
 <div class="content">
 	<h1>Random Matrix Theory - Basics</h1>
 	<hr>
-	<h1 id="introduction">Introduction</h1>
+	
+
+<h1 id="introduction">Introduction</h1>
+
 <p>The first time I heard the term <strong>Random Matrix Theory</strong> (RMT) was at the <a href="http://www.physics.rutgers.edu/colloquium/">Wednesday physics colloquium</a> given by one of the faculty members at Rutgers. Immediately, I was intrigued by the idea of bringing together two of the most useful concepts in math: statistics and linear algebra. It wasn&rsquo;t obvious to me what we could learn from studying random matrices but the more research I did into the field, the more I realized that their usage was spreading across the different branches of science.</p>
+
 <p>In an effort to learn the basics, I read through multiple sets of lecture notes and articles looking for examples that would build on my background and familiarity with physics. The simplest (and most helpful) example that I found that illustrated the concepts of RMT was the exact result for the 2x2 Gaussian Orthogonal Ensemble (GOE) level repulsion. Before we get into the details and significance of GOE, level repulsion, and other concepts let&rsquo;s take a look at the example.</p>
+
 <h1 id="the-2x2-example">The 2x2 Example</h1>
+
 <h2 id="random-variables">Random Variables</h2>
+
 <p>If you&rsquo;re familiar with statistics, you&rsquo;ll understand the concept of <a href="https://en.wikipedia.org/wiki/Random_variable">random variables</a>. To summarize, a random variable $X$ is one whose value is sampled from a distribution. The classic examples of discrete random variables are the result of a coin toss or dice roll. Examples of continuous random variables are those that sample from a Gaussian or uniform distribution.</p>
+
 <p>In any case, a <a href="https://en.wikipedia.org/wiki/Normal_distribution">normally distributed</a> random variable is often written as $X\sim\mathcal{N}(\mu,\sigma^2)$ meaning that the values of $X$ are sampled from a Gaussian distribution with mean $\mu$ and standard deviation $\sigma$. In other words the <a href="https://en.wikipedia.org/wiki/Probability_density_function">probability density function (pdf)</a> of $X$, $f_X(x)$, is given by
 $$f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp \left[-\frac{(x-\mu)^2}{2\sigma^2}\right]\tag{1}$$
 so that the probability that the value of $X$ lies between $a$ and $b$ is given by
 $$\Pr[a \leq X \leq b] = \int_a^b dx f_X(x).\tag{2}$$</p>
+
 <h2 id="random-matrices">Random Matrices</h2>
+
 <p>With the concept of random variables, we can now introduce a random matrix. A random matrix is simply a matrix whose entries are random variables. The Gaussian Orthogonal Ensemble mentioned before is an ensemble of real symmetric random matrices whose entries are normally distributed random variables. Consider the GOE containing matrices of the form
 $$\begin{bmatrix}X_1 &amp; X_3 \\X_3 &amp; X_2\end{bmatrix}\tag{3}\label{eq:goe}$$
 with $X_1\sim\mathcal{N}(0,1)$, $X_2\sim\mathcal{N}(0,1)$, and $X_3\sim\mathcal{N}(0,\frac{1}{2})$.
 Sampling from this ensemble will give matrices that look like
 $$\begin{bmatrix}0.554030 &amp; -0.471710 \\ -0.471710 &amp; -0.124200\end{bmatrix}$$</p>
+
 <h2 id="separation-between-eigenvalues">Separation Between Eigenvalues</h2>
+
 <p>What can we learn from generating matrices from the ensemble described by Eq. $\ref{eq:goe}$? The answer is usually in the spectral properties, i.e. the properties of the eigenvalues. One question we might like to answer is: <em>what is the typical spacing between eigenvalues?</em></p>
+
 <p>To approach this problem we need to diagonalize a random matrix. Although this may seem strange it is actually straight forward. Take Eq. \ref{eq:goe} and do the usual diagonalization procedure i.e. set
 $$\det \begin{bmatrix}(X_1 - \lambda ) &amp; X_3 \\X_3 &amp; (X_2 -\lambda ) \end{bmatrix} = 0 \tag{4}$$
 and solve for $\lambda$.
@@ -78,8 +91,8 @@ $$p(s) = \int _{-\infty}^{\infty} dx_1 dx_2 dx_3 \frac{e^{-\frac{1}{2}x_1^2}}{\s
 To proceed it is helpful to introduce new variables $r,\theta,\psi$ defined through
 $$
 \begin{cases}
-x_1 - x_2 = r\cos(\theta) \\<br>
-2x_3 = r\sin(\theta) \\<br>
+x_1 - x_2 = r\cos(\theta) \\<br />
+2x_3 = r\sin(\theta) \\<br />
 x_1 + x_2 = \psi
 \end{cases}
 $$
@@ -89,11 +102,14 @@ $$p(s) = \frac{s}{2}e^{-s^2 /4}$$
 We can rescale our result by the mean level spacing, $\langle s \rangle = \sqrt{\pi}$ and the final result is known as Wigner&rsquo;s Surmise:
 $$p(s) = \frac{\pi s}{2}e^{-\frac{1}{4}\pi s^2}\tag{7}\label{eq:wigsur}$$
 Plotting Eq. $\ref{eq:wigsur}$ we see that the probability that two eigenvalues are either very close together or very far apart vanishes. This behavior is known as level repulsion and is a generic feature of correlated random variables.
-<!-- raw HTML omitted -->
+<img src="/wignerssurmise.png" style="width:100%">
 If we were to look at the probability distribution of the seperation between uncorrelated random variables, we would see something drastically different. In fact, we find that the separation is given by $p(s) = e^{-s}$ and we see that the random variables do <em>not</em> repel but rather attract.
-<!-- raw HTML omitted --></p>
+<img src="/poissep.png" style="width:100%"></p>
+
 <h1 id="summary">Summary</h1>
+
 <p>The idea that we can learn anything by studying random matrices may be quite surprising. At first glance it seems that there is not much to gain by studying a matrix made up of independent random variables. However, by studying the spectral properites of these matrices we find that there are correlations in the spectrum as a result of trading the description of an $N\times N$ matrix of random variables to a description using its $N$ eigenvalues. We have seen level repulsion as one example of many generic features that arise in correlated systems. In physics, the most interesting problems arise when the correlations between the particles are strong and often times random matrix theory finds its way into the description.</p>
+
 <p>The example above is based on the notes by <a href="https://arxiv.org/abs/1712.07903">Livan, Novaes, and Vivo</a></p>
 
 </div>
