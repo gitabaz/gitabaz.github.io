@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://gitabaz.github.io/</loc>
-    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+    <lastmod>2022-08-11T07:26:54-04:00</lastmod>
   </url>
   
   <url>
@@ -16,7 +16,32 @@
   </url>
   
   <url>
+    <loc>https://gitabaz.github.io/blog/</loc>
+    <lastmod>2022-08-11T07:26:54-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gitabaz.github.io/blog/combinatorics-through-complex-analysis/</loc>
+    <lastmod>2022-08-11T07:26:54-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gitabaz.github.io/tags/math/</loc>
+    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gitabaz.github.io/tags/physics/</loc>
+    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://gitabaz.github.io/blog/rmt-basics/</loc>
+    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gitabaz.github.io/tags/</loc>
     <lastmod>2019-10-08T17:41:16-04:00</lastmod>
   </url>
   
@@ -26,43 +51,17 @@
   </url>
   
   <url>
-    <loc>https://gitabaz.github.io/blog/</loc>
-    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://gitabaz.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://gitabaz.github.io/tags/hugo/</loc>
     <lastmod>2019-09-21T15:09:07-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://gitabaz.github.io/tags/math/</loc>
-    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://gitabaz.github.io/tags/physics/</loc>
-    <lastmod>2019-10-08T17:41:16-04:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://gitabaz.github.io/tags/site/</loc>
     <lastmod>2019-09-21T15:09:07-04:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://gitabaz.github.io/tags/</loc>
-    <lastmod>2019-09-21T15:09:07-04:00</lastmod>
-    <priority>0</priority>
+    <loc>https://gitabaz.github.io/categories/</loc>
   </url>
   
 </urlset>

@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Physics on Aidan Zabalo</title>
+    <title>physics on Aidan Zabalo</title>
     <link>https://gitabaz.github.io/tags/physics/</link>
-    <description>Recent content in Physics on Aidan Zabalo</description>
+    <description>Recent content in physics on Aidan Zabalo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Oct 2019 17:41:16 -0400</lastBuildDate>
-    
-	<atom:link href="https://gitabaz.github.io/tags/physics/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 08 Oct 2019 17:41:16 -0400</lastBuildDate><atom:link href="https://gitabaz.github.io/tags/physics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Random Matrix Theory - Basics</title>
       <link>https://gitabaz.github.io/blog/rmt-basics/</link>

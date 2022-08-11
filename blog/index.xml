@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Aidan Zabalo</title>
@@ -6,10 +6,15 @@
     <description>Recent content in Blog on Aidan Zabalo</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Oct 2019 17:41:16 -0400</lastBuildDate>
-    
-	<atom:link href="https://gitabaz.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 11 Aug 2022 07:26:54 -0400</lastBuildDate><atom:link href="https://gitabaz.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Combinatorics Through Complex Analysis</title>
+      <link>https://gitabaz.github.io/blog/combinatorics-through-complex-analysis/</link>
+      <pubDate>Thu, 11 Aug 2022 07:26:54 -0400</pubDate>
+      
+      <guid>https://gitabaz.github.io/blog/combinatorics-through-complex-analysis/</guid>
+      <description>In a recent project I came across the following problem: Evaluate $$ a_{N,z} = \sum_{\{\alpha\} \in \mathcal{A}_{N,z}} \prod_{\alpha} e^{-\frac{2\pi\eta\alpha}{N}}\tag{1} \label{eq:exact_az} $$ where $\mathcal{A}_{N,z}$ contains all sets with $z$ unique integers chosen from $\{1,\ldots,N\}$ and $\{\alpha\}$ labels a particular set. To clarify what this means, consider the case where $N = 4$ and $z=2$. The sum we are interested in runs over the terms $$ \mathcal{A}_{N=4,z=2} = \{ \{1,2\}, \{1,3\}, \{1,4\}, \{2,3\}, \{2,4\}, \{3,4\} \} $$ so that $$ a_{N=4,z=2} = e^{-\frac{2\pi\eta(1 + 2)}{N}} + e^{-\frac{2\pi\eta(1 + 3)}{N}} + e^{-\frac{2\pi\eta(1 + 4)}{N}} + e^{-\frac{2\pi\eta(2 + 3)}{N}} + e^{-\frac{2\pi\eta(2 + 4)}{N}} + e^{-\frac{2\pi\eta(3 + 4)}{N}}.</description>
+    </item>
     
     <item>
       <title>Random Matrix Theory - Basics</title>
