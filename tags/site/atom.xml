@@ -82,7 +82,7 @@ that.&lt;&#x2F;p&gt;
     &lt;&#x2F;svg&gt;
 &lt;&#x2F;a&gt;
 &lt;&#x2F;h2&gt;
-&lt;p&gt;The documentation has a nick quickstart tutorial that shows up to get up and
+&lt;p&gt;The documentation has a nice quickstart tutorial that shows up to get up and
 running and build some templates. After following the initial set up steps&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;$ zola init &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;mywebsite&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Welcome to Zola!
