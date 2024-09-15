@@ -1,61 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
-<title>  </title>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
 
-<link rel="stylesheet" href="/css/menu.css">
-<link rel="stylesheet" href="/css/style.css">
+    <title>Combinatorics through complex analysis - Zabalo</title>
+    <meta name="description" content="">
+
+    
+    <link rel="stylesheet" href="https://gitabaz.github.io/base.css">
+    <link rel="stylesheet" href="https://gitabaz.github.io/auto.css">
+
+    <link rel="preload" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css></noscript>
+
+    
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                tags: 'ams'
+            }
+        }
+    </script>
+    <script id="MathJax-script" async src=https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3&#x2F;es5&#x2F;tex-mml-chtml.js ></script>
+    
+
+    
+    
+    <meta property="og:title" content="Combinatorics through complex analysis">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="https://gitabaz.github.io/about/">
+    <meta property="article:published_time" content="2022-08-11T07:26:54-04:00">
+    
+    
+    <meta property="article:tag" content="physics">
+    
+    <meta property="article:tag" content="math">
+    
+    <meta property="article:tag" content="tricks">
+    
+    <meta property="article:tag" content="approximations">
+    
+    
+    
+    
+    <meta property="og:url" content="https://gitabaz.github.io/blog/combinatorics-through-complex-analysis/">
+    
+    
 
 
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[','\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-});
-</script>
-
-
+    
+    
 </head>
+<body>
+<div class="container">
+    
+    
+    <header>
+        <h1 class="site-header">
+            <a href="https:&#x2F;&#x2F;gitabaz.github.io">Zabalo</a>
+        </h1>
+        <nav>
+            <ul>
+            
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;">Home</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;projects&#x2F;">Projects</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;blog&#x2F;">Blog</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;tags&#x2F;">Tags</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;about&#x2F;">About</a></li>
+            
+            
+            </ul>
+        </nav>
+    </header>
+    
+    
 
+<article class="post">
+    
+    
+    
+        
+        <header>
+            <h1>Combinatorics through complex analysis</h1>
+        </header>
+        
+    <div class="article-info">
+        
+        
+        <div class="article-date">August 11, 2022 ◦ 6 min ◦ </div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://gitabaz.github.io/tags/physics/">#physics</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/math/">#math</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/tricks/">#tricks</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/approximations/">#approximations</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
 
-
-
-<header id="header">
-<nav class="links" style="--items: 3;">
-	
-	
-		<a href="/">Home</a>
-	
-		<a href="/research/">Research</a>
-	
-		<a href="/blog/">Blog</a>
-	
-	<span class="line"></span>
-</nav>
-</header>
-
-
-<div class="content">
-	<h1>Combinatorics Through Complex Analysis</h1>
-	<hr>
-	<p>In a recent project I came across the following problem: Evaluate
-$$
-a_{N,z} = \sum_{\{\alpha\} \in \mathcal{A}_{N,z}} \prod_{\alpha} e^{-\frac{2\pi\eta\alpha}{N}}\tag{1}
+    
+    
+    <div class="content">
+        <p>In a recent project I came across the following problem: Evaluate
+\begin{equation}
+a_{N,z} = \sum_{\{\alpha\} \in \mathcal{A}_{N,z}} \prod_{\alpha} e^{-\frac{2\pi\eta\alpha}{N}}
 \label{eq:exact_az}
-$$
+\end{equation}
 where $\mathcal{A}_{N,z}$ contains all sets with $z$ unique integers chosen
 from $\{1,\ldots,N\}$ and $\{\alpha\}$ labels a particular set. To clarify
 what this means, consider the case where $N = 4$ and $z=2$. The sum we are
 interested in runs over the terms
-$$
+\begin{equation}
 \mathcal{A}_{N=4,z=2} =
 \{
 \{1,2\},
@@ -65,9 +146,9 @@ $$
 \{2,4\},
 \{3,4\}
 \}
-$$
+\end{equation}
 so that
-$$
+\begin{equation}
 a_{N=4,z=2} =
 e^{-\frac{2\pi\eta(1 + 2)}{N}} +
 e^{-\frac{2\pi\eta(1 + 3)}{N}} +
@@ -75,82 +156,103 @@ e^{-\frac{2\pi\eta(1 + 4)}{N}} +
 e^{-\frac{2\pi\eta(2 + 3)}{N}} +
 e^{-\frac{2\pi\eta(2 + 4)}{N}} +
 e^{-\frac{2\pi\eta(3 + 4)}{N}}.
-$$
+\end{equation}
 For arbitrary $N$ and $z$ there are $\binom{N}{z}$ of these terms so that when
 $N$ gets large and $z$ is $O(N)$ carrying out the sum directly becomes
 unfeasible. However, there is a nice trick we can use that connects
 combinatorics with complex analysis and allows us to evaluate the result in the
 large $N$ limit.</p>
-<h2 id="helper-function">Helper function</h2>
+<h2 id="helper-function">Helper function<a class="zola-anchor" href="#helper-function" aria-label="Anchor link for: helper-function">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
 <p>The first step is to introduce the helper function
-$$
+\begin{equation}
 \prod_{j=1}^N \left(1 + te^{-\frac{2\pi\eta j}{N}} \right) = \sum_{r=0}^N a_{N,r} t^r
-\tag{2}\label{eq:helper_func}
-$$
+\label{eq:helper_func}
+\end{equation}
 and notice that it is a polynomial in $t$ whose coefficients $a_{N,r}$ are
 exactly the sums we are trying to evaluate. To see this, consider again the
-case where $N=4$. Expanding the left hand side of Eq. $\ref{eq:helper_func}$
-$$
-1 + \\<br>
-t   \left( e^{-\frac{2\pi\eta 1}{N}} + e^{-\frac{2\pi\eta 2}{N}} + e^{-\frac{2\pi\eta 3}{N}} + e^{-\frac{2\pi\eta 4}{N}} \right) + \\<br>
-t^2 \left( e^{-\frac{2\pi\eta (1+2)}{N}} + e^{-\frac{2\pi\eta (1+3)}{N}} + e^{-\frac{2\pi\eta (1+4)}{N}} + e^{-\frac{2\pi\eta (2+3)}{N}} + e^{-\frac{2\pi\eta (2+4)}{N}} + e^{-\frac{2\pi\eta (3+4)}{N}} \right) + \\<br>
-t^3 \left( e^{-\frac{2\pi\eta (1+2+3)}{N}} + e^{-\frac{2\pi\eta (1+2+4)}{N}} + e^{-\frac{2\pi\eta (1+3+4)}{N}} + e^{-\frac{2\pi\eta (2+3+4)}{N}} \right) + \\<br>
-t^4 \left( e^{-\frac{2\pi\eta (1 + 2 + 3 + 4)}{N}}\right)
-$$
+case where $N=4$. Expanding the left hand side of Eq. $\eqref{eq:helper_func}$
+\begin{align}
+1 + \notag \\
+t   \left( e^{-\frac{2\pi\eta 1}{N}} + e^{-\frac{2\pi\eta 2}{N}} + e^{-\frac{2\pi\eta 3}{N}} + e^{-\frac{2\pi\eta 4}{N}} \right) + \notag \\
+t^2 \left( e^{-\frac{2\pi\eta (1+2)}{N}} + e^{-\frac{2\pi\eta (1+3)}{N}} + e^{-\frac{2\pi\eta (1+4)}{N}} + e^{-\frac{2\pi\eta (2+3)}{N}} + e^{-\frac{2\pi\eta (2+4)}{N}} + e^{-\frac{2\pi\eta (3+4)}{N}} \right) + \\
+t^3 \left( e^{-\frac{2\pi\eta (1+2+3)}{N}} + e^{-\frac{2\pi\eta (1+2+4)}{N}} + e^{-\frac{2\pi\eta (1+3+4)}{N}} + e^{-\frac{2\pi\eta (2+3+4)}{N}} \right) + \notag \\
+t^4 \left( e^{-\frac{2\pi\eta (1 + 2 + 3 + 4)}{N}}\right) \notag
+\end{align}
 we see that the coefficient of the $t^2$ term is exactly $a_{N=4, z=2}$. In
 order to pick out the term that we are interested in ($r=z$) we rewrite the
 parameter $t$ as $t=e^{-i\phi}$ and multiply by
 $(2\pi)^{-1}\int_{-\pi}^{\pi} \mathrm{d}\phi e^{i\phi z}$.
-Applying the transformation to the right hand side of Eq. $\ref{eq:helper_func}$
+Applying the transformation to the right hand side of Eq. $\eqref{eq:helper_func}$
 first we see that we get exactly what we wanted
-$$
+\begin{equation}
 \frac{1}{2\pi}\sum_{r=0}^N a_{N,r} \int_{-\pi}^{\pi} \mathrm{d}\phi e^{-i\phi (r-z)} =
 \sum_{r=0}^N a_{N,r}\delta_{r,z} = a_{N,z},
-$$
+\end{equation}
 where we have interchanged the order of the sum and integral and used the
 definition of the <a href="https://mathworld.wolfram.com/DeltaFunction.html">delta function</a>
 in terms of its Fourier transform. Therefore, we have
-$$
+\begin{equation}
 a_{N,z} =
 \frac{1}{2\pi} \int_{-\pi}^{\pi} \mathrm{d}\phi
 \left[
 e^{i\phi z}
 \prod_{j=1}^N \left(1 + e^{-i\phi}e^{-\frac{2\pi\eta j}{N}} \right)
 \right].
-$$</p>
-<h2 id="the-large-n-limit">The large $N$ limit</h2>
+\end{equation}</p>
+<h2 id="the-large-n-limit">The large $N$ limit<a class="zola-anchor" href="#the-large-n-limit" aria-label="Anchor link for: the-large-n-limit">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
 <p>To evaluate the integral in the large $N$ limit, we use the
 <a href="https://en.wikipedia.org/wiki/Method_of_steepest_descent">saddle-point method</a>.
 It is convenient to rewrite the above equation as
-$$
+\begin{equation}
 a_{N,z} =
 \frac{1}{2\pi} \int_{-\pi}^{\pi} \mathrm{d}\phi e^{z f(\phi)};
 \quad
 f(\phi) = i\phi + \frac{1}{z}\sum_{j=1}^N \ln \left[1 + e^{-i\phi}e^{-\frac{2\pi\eta j}{N}}\right],
-$$
+\end{equation}
 and take $z, N \to \infty$ with $z/N = \mathrm{const}$.
 An important step is to find the stationary point $\phi_0$, where
 $f'(\phi_0) = 0$, and the second derivative $f''(\phi_0)$.
 By turning the sum over $j$ to an integral over $x = j/N$ we find
-$$
+\begin{equation}
 \phi_0 = -i \ln
 \left[
 \frac{e^{-\frac{2\pi\eta(N-z)}{N}} - 1}{1 - e^{\frac{2\pi\eta z}{N}}}
 \right]
 \quad \mathrm{and} \quad
 f''(\phi_0) = -\frac{N\sinh\left[\pi\eta\right]}{4\pi\eta z}\sec\left[\frac{\phi_0}{2}\right]\mathrm{sech}\left[\pi\eta + \frac{\phi_0}{2}\right],
-$$
+\end{equation}
 up to $O(1/N)$ corrections. These results can then be substitute into the
 saddle point equation
-$$
+\begin{equation}
 a_{N,z} = \frac{e^{zf(\phi_0)}}{\sqrt{-2\pi z f''(\phi_0)}}.
-$$
+\end{equation}
 Note that it is important to keep sub-leading
 corrections to the integral when evaluating $f(\phi_0)$ since it introduces an
 overall prefactor to the result.</p>
-<h2 id="final-result">Final result</h2>
+<h2 id="final-result">Final result<a class="zola-anchor" href="#final-result" aria-label="Anchor link for: final-result">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
 <p>The final result is then
-$$
+\begin{equation}
 a_{N,z} =
 e^{-i\phi_0(N-z) - \pi\eta N}
 \left(
@@ -162,16 +264,80 @@ e^{\frac{N}{2\pi\eta}\left(
 \left[
 \frac{N\sinh\left[\pi\eta\right]}{2\eta}\sec\left[\frac{\phi_0}{2}\right]\mathrm{sech}\left[\pi\eta + \frac{\phi_0}{2}\right]
 \right]^{-\frac{1}{2}},
-\tag{3}\label{eq:approx_az}
-$$
+\label{eq:approx_az}
+\end{equation}
 where $\mathrm{Li}_2(z)$ is the <a href="https://en.wikipedia.org/wiki/Polylogarithm">polylogarithm</a>.
-Below we plot the exact expression (Eq. $\ref{eq:exact_az}$) and the
-approximation (Eq. $\ref{eq:approx_az}$) for $N=20$ and $\eta = 0.1$. We see
+Below we plot the exact expression (Eq. $\eqref{eq:exact_az}$) and the
+approximation (Eq. $\eqref{eq:approx_az}$) for $N=20$ and $\eta = 0.1$. We see
 that there is excellent agreement between the results.</p>
-<p><img src="/az_N20_eta0.1.png" alt=""></p>
 
+    
+    
+    
+
+
+
+    <img src="https://gitabaz.github.io/blog/combinatorics-through-complex-analysis/az_N20_eta0.1.png" style="background-color:white;"/>
+
+
+    </div>
+    
+
+    
+</article>
+
+
+    <footer>
+        <p>
+            
+<span class="icon-text">
+  
+
+  
+
+  
+  <a href="https://github.com/gitabaz" aria-label="Open gitabaz GitHub" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-github fa-lg" aria-hidden="true" title="GitHub"></i>
+    </span>
+  </a>
+  
+
+  
+  <a href="https://www.linkedin.com/in/azabalo" aria-label="Open azabalo LinkedIn" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true" title="LinkedIn"></i>
+    </span>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a href="https://scholar.google.com/citations?user=RrJeRTkAAAAJ" aria-label="Open RrJeRTkAAAAJ Google Scholar" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-google-scholar fa-lg" aria-hidden="true" title="Google Scholar"></i>
+    </span>
+  </a>
+  
+
+  
+</span>
+
+        </p>
+        <p>
+            
+            
+        </p>
+    </footer>
 </div>
-
-<footer id="footer">
-</footer>
-
+</body>
+</html>

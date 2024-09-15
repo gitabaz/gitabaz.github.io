@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+
+    <title>Site refresh (Hugo $\rightarrow$ Zola) - Zabalo</title>
+    <meta name="description" content="">
+
+    
+    <link rel="stylesheet" href="https://gitabaz.github.io/base.css">
+    <link rel="stylesheet" href="https://gitabaz.github.io/auto.css">
+
+    <link rel="preload" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css></noscript>
+
+    
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                tags: 'ams'
+            }
+        }
+    </script>
+    <script id="MathJax-script" async src=https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3&#x2F;es5&#x2F;tex-mml-chtml.js ></script>
+    
+
+    
+    
+    <meta property="og:title" content="Site refresh (Hugo $\rightarrow$ Zola)">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="https://gitabaz.github.io/about/">
+    <meta property="article:published_time" content="2024-09-13T08:35:26-04:00">
+    
+    
+    <meta property="article:tag" content="site">
+    
+    <meta property="article:tag" content="hugo">
+    
+    <meta property="article:tag" content="zola">
+    
+    <meta property="article:tag" content="tutorial">
+    
+    
+    
+    
+    <meta property="og:url" content="https://gitabaz.github.io/blog/site-refresh-hugo-to-zola/">
+    
+    
+
+
+    
+    
+</head>
+<body>
+<div class="container">
+    
+    
+    <header>
+        <h1 class="site-header">
+            <a href="https:&#x2F;&#x2F;gitabaz.github.io">Zabalo</a>
+        </h1>
+        <nav>
+            <ul>
+            
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;">Home</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;projects&#x2F;">Projects</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;blog&#x2F;">Blog</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;tags&#x2F;">Tags</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;about&#x2F;">About</a></li>
+            
+            
+            </ul>
+        </nav>
+    </header>
+    
+    
+
+<article class="post">
+    
+    
+    
+        
+        <header>
+            <h1>Site refresh (Hugo $\rightarrow$ Zola)</h1>
+        </header>
+        
+    <div class="article-info">
+        
+        
+        <div class="article-date">September 13, 2024 ◦ 6 min ◦ </div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://gitabaz.github.io/tags/site/">#site</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/hugo/">#hugo</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/zola/">#zola</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/tutorial/">#tutorial</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    
+    
+    <div class="content">
+        <p>It has been a while since I have updated this site. A big reason for this is
+that I built a new computer and did not have the required Hugo files to
+continue updating the site. I only ever pushed the <code>public</code> folder to github
+and not the actual Hugo site development files. At some point, I copied over
+the minimum required files (the posts, css, etc.) so that I could one day
+rebuild everything. That day is today! A lot has changed since I last used Hugo
+but it is just as confusing as I remember (now with even more added confusion?
+what are/when to use modules?). In any case, we are going to rebuild the site
+from the ground up and copy over files as necessary to maintain the same look
+of the original version.</p>
+<p>I started this post to document the setup of the website but along the way I
+ran into a number of issues which made the refresh a pain. Some of the pain
+points include:</p>
+<ul>
+<li>Content pages are now created with frontmatter in toml instead of yaml.</li>
+<li>Trying to build a "hello world" of sorts with no added themes just fails due
+to missing files.</li>
+<li>Installing a theme is inconsistent: documentation says to use git submodules
+but many themes are now using Hugo modules.</li>
+<li>After finding a theme I liked, I had to go through multiple hoops such as
+upgrading to a newer extended version of Hugo, update some write permissions
+to <code>.cache</code>, having to install and updated version of npm and nodejs, and npm
+installing a ton of packages (see image below).</li>
+<li>Even then, I couldn't get the theme to work properly as the json resume
+feature was failing for some reason.</li>
+<li>In order to get math equations to render the theme comes with some basic
+instructions to setup katex. Unfortunately, katex is missing features such as
+equation labels which I tend to use a lot. It also did not properly display
+inline equations and was rendering them twice.
+
+    
+    
+    
+
+
+
+    
+    <img src="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;processed_images&#x2F;theme_node_packages.6a9c93a399dfc2a9.png" style="background-color:transparent;"/>
+
+</li>
+</ul>
+<p>I always seem to have difficulties when working with Hugo. I tried reading
+through the documentation but it is so scattered that I end up having 3-4 tabs
+per topic I am trying to understand. I ended up deciding to switch to a
+different static site generator, preferably one that was simpler and not
+node/js based. After reading a few blog posts, I noticed other people have had
+the same difficulty working with Hugo
+[<a href="https://mrkaran.dev/posts/migrating-to-zola/">1</a>,
+<a href="https://www.kytta.dev/blog/one-week-with-zola/">2</a>,
+<a href="https://www.xypnox.com/blag/posts/migrating-to-zola/">3</a>] and switched to
+<em>Zola</em>. Zola is supposed to be much simpler to use and my experience was just
+that.</p>
+<h2 id="setting-up-zola">Setting up Zola<a class="zola-anchor" href="#setting-up-zola" aria-label="Anchor link for: setting-up-zola">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>The documentation has a nick quickstart tutorial that shows up to get up and
+running and build some templates. After following the initial set up steps</p>
+<pre data-lang="sh" style="background-color:#282828;color:#fdf4c1aa;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#fdf4c1;">$ zola init </span><span style="color:#fe8019;">&lt;</span><span style="color:#fdf4c1;">mywebsite</span><span style="color:#fe8019;">&gt;
+</span><span style="color:#fdf4c1;">Welcome to Zola!
+</span><span style="color:#fdf4c1;">Please answer a few questions to get started quickly.
+</span><span style="color:#fdf4c1;">Any choices made can be changed by modifying the `config.toml` file later.
+</span><span style="color:#fe8019;">&gt;</span><span> What </span><span style="color:#fdf4c1;">is the URL of your site</span><span style="color:#fe8019;">?</span><span style="color:#fdf4c1;"> (https://example.com</span><span>)</span><span style="color:#fabd2f;">:</span><span style="color:#fdf4c1;"> https://example.com
+</span><span style="color:#fe8019;">&gt;</span><span> Do </span><span style="color:#fdf4c1;">you want to enable Sass compilation</span><span style="color:#fe8019;">? </span><span style="color:#fa5c4b;">[</span><span style="color:#fdf4c1;">Y/n</span><span style="color:#fa5c4b;">]</span><span style="color:#fdf4c1;">: Y
+</span><span style="color:#fe8019;">&gt;</span><span> Do </span><span style="color:#fdf4c1;">you want to enable syntax highlighting</span><span style="color:#fe8019;">? </span><span style="color:#fa5c4b;">[</span><span style="color:#fdf4c1;">y/N</span><span style="color:#fa5c4b;">]</span><span style="color:#fdf4c1;">: y
+</span><span style="color:#fe8019;">&gt;</span><span> Do </span><span style="color:#fdf4c1;">you want to build a search index of the content</span><span style="color:#fe8019;">? </span><span style="color:#fa5c4b;">[</span><span style="color:#fdf4c1;">y/N</span><span style="color:#fa5c4b;">]</span><span style="color:#fdf4c1;">: y
+</span></code></pre>
+<p>the resulting directory structure is</p>
+<pre data-lang="sh" style="background-color:#282828;color:#fdf4c1aa;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#fabd2f;">.
+</span><span style="color:#fdf4c1;">├── config.toml
+</span><span style="color:#fdf4c1;">├── content
+</span><span style="color:#fdf4c1;">├── public
+</span><span style="color:#fdf4c1;">│   ├── elasticlunr.min.js
+</span><span style="color:#fdf4c1;">│   └── search_index.en.js
+</span><span style="color:#fdf4c1;">├── sass
+</span><span style="color:#fdf4c1;">├── static
+</span><span style="color:#fdf4c1;">├── templates
+</span><span style="color:#fdf4c1;">└── themes
+</span></code></pre>
+<p>I tried to immediately view the site with</p>
+<pre data-lang="sh" style="background-color:#282828;color:#fdf4c1aa;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#fdf4c1;">$ zola serve
+</span></code></pre>
+<p>and visiting <code>localhost:1111</code>; and to my surprise it just worked! I saw a
+"Welcome to Zola!" page with a message indicating there was no template to
+render so it was showing a default page and some recommendations for how to
+proceed. Already off to a much better start than with Hugo.</p>
+<p>I continued following the basic <a href="https://www.getzola.org/documentation/getting-started/overview/">getting started
+tutorial</a> to
+get a feel for how Zola works. Overall, it seems intuitive and
+straight-forward. I like how all of the configuration options are listed on a
+single
+<a href="https://www.getzola.org/documentation/getting-started/configuration/">page</a>.
+The same is true for other settings such as the <a href="https://www.getzola.org/documentation/content/page/">frontmatter
+options</a> of a page.</p>
+<h2 id="customization">Customization<a class="zola-anchor" href="#customization" aria-label="Anchor link for: customization">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>With the basics out of the way, I went straight into downloading a theme for
+the site. The recommended way is to just do a <code>git clone</code> in the themes folder
+but I opted to add the theme as a submodule similar to what I did before when
+using Hugo. This is because my site directory is a git repository itself.</p>
+<pre data-lang="sh" style="background-color:#282828;color:#fdf4c1aa;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#fdf4c1;">git submodule add https://github.com/justint/papaya.git themes/papaya
+</span></code></pre>
+<p>In order to get mathjax rendering I simply added the fields in <code>config.toml</code></p>
+<pre data-lang="toml" style="background-color:#282828;color:#fdf4c1aa;" class="language-toml "><code class="language-toml" data-lang="toml"><span>[</span><span style="color:#8ec07c;">extra</span><span>]
+</span><span style="font-weight:bold;color:#8ec07c;">mathjax </span><span>= </span><span style="color:#d3869b;">true
+</span><span>
+</span><span>[</span><span style="color:#8ec07c;">extra.cdn</span><span>]
+</span><span style="font-weight:bold;color:#8ec07c;">mathjax </span><span>= </span><span style="color:#b8bb26;">&quot;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js&quot;
+</span></code></pre>
+<p>and then placed the code below into my copy of <code>templates/base.html</code></p>
+<pre data-lang="html" style="background-color:#282828;color:#fdf4c1aa;" class="language-html "><code class="language-html" data-lang="html"><span>{% if config.extra.mathjax %}
+</span><span>    </span><span style="color:#83a598;">&lt;</span><span style="font-weight:bold;color:#8ec07c;">script</span><span style="color:#83a598;">&gt;
+</span><span>        </span><span style="color:#fabd2f;">window</span><span style="color:#fdf4c1;">.MathJax </span><span style="color:#fe8019;">= </span><span style="color:#fdf4c1;">{
+</span><span style="color:#fdf4c1;">        tex: {
+</span><span style="color:#fdf4c1;">        inlineMath: [[</span><span style="color:#b8bb26;">&#39;$&#39;</span><span style="color:#fdf4c1;">, </span><span style="color:#b8bb26;">&#39;$&#39;</span><span style="color:#fdf4c1;">], [</span><span style="color:#b8bb26;">&#39;\\(&#39;</span><span style="color:#fdf4c1;">, </span><span style="color:#b8bb26;">&#39;\\)&#39;</span><span style="color:#fdf4c1;">]],
+</span><span style="color:#fdf4c1;">                    tags: </span><span style="color:#b8bb26;">&#39;ams&#39;
+</span><span style="color:#fdf4c1;">             }
+</span><span style="color:#fdf4c1;">        };
+</span><span style="color:#fdf4c1;">    </span><span style="color:#83a598;">&lt;/</span><span style="font-weight:bold;color:#8ec07c;">script</span><span style="color:#83a598;">&gt;
+</span><span>    </span><span style="color:#83a598;">&lt;</span><span style="font-weight:bold;color:#8ec07c;">script </span><span style="color:#b8bb26;">id</span><span style="color:#8ec07c;">=</span><span style="color:#b8bb26;">&quot;MathJax-script&quot; </span><span style="color:#8ec07c;">async src=</span><span style="color:#b8bb26;">{{/* </span><span style="color:#8ec07c;">config.extra.cdn.mathjax */}} </span><span style="color:#83a598;">&gt;&lt;/</span><span style="font-weight:bold;color:#8ec07c;">script</span><span style="color:#83a598;">&gt;
+</span><span>{% endif %}
+</span></code></pre>
+<p>This makes it so that I can enable/disable including the mathjax js file by
+switching a flag in <code>config.toml</code>. Since the include happens in the <code>base.html</code>
+file it means that all site pages will have the import. It will probably be
+better to move this flag into the page frontmatter so that we don't import it
+when it's not used but this also lets us use latex everywhere which is nice.
+The order of the scripts seems to be important as I was having difficulty
+rendering inline math on chrome with the reversed order.</p>
+<p>Overall the setup was simple but I did run into some issues. Two things I
+struggled with were: getting the site to compile due a missing <code>banner.jpg</code>
+file and getting syntax highlighting to use the colorschemes I wanted. For the
+image issue, the image was in the theme's static folder
+<code>themes/&lt;themename&gt;/static</code> so I thought it would be found by Zola. I spent a
+lot of time trying to figure out why it couldn't find it and I'm still not 100%
+sure, but I believe it is because the image was being modified through a
+shortcode and so it needs to be at the point of origin. For the colorscheme
+issue, I am unable to change the colorscheme using a css file and the visitor's
+light/dark mode preferences. It always defaults to material-light/material-dark
+even though I set it as gruvbox-light/gruvbox-dark. Other than those issues,
+everything else was smooth sailing and a lot of my confusion was cleared up by
+reading the documentation.</p>
+<p>The templating engine used, <a href="https://keats.github.io/tera/">Tera</a> is simple
+enough that I was able to edit the theme defaults and include some additional
+features. One example is writing my own shortcode for adding a background color
+to a transparent image and allowing for the option to resize it. By creating a
+file <code>templates/shortcodes/imgbg.html</code> with the code</p>
+<pre data-lang="html" style="background-color:#282828;color:#fdf4c1aa;" class="language-html "><code class="language-html" data-lang="html"><span>{% if path is starting_with(&quot;./&quot;) %}
+</span><span>    {% set relative_path = page.relative_path | split(pat=&quot;/&quot;) | slice(end=-1) | join(sep=&quot;/&quot;) %}
+</span><span>    {% set img_path = path | trim_start_matches(pat=&quot;./&quot;) %}
+</span><span>    {% set img_path = relative_path ~ &quot;/&quot; ~ img_path %}
+</span><span>{% else %}
+</span><span>    {% set img_path = path %}
+</span><span>{% endif %}
+</span><span>
+</span><span>{% if resize == true %}
+</span><span>    {% set image = resize_image(path=img_path, width=width, height=height, op=op) %}
+</span><span>    </span><span style="color:#83a598;">&lt;</span><span style="font-weight:bold;color:#8ec07c;">img </span><span style="color:#8ec07c;">src=</span><span style="color:#b8bb26;">&quot;{{ image.url }}&quot; </span><span style="color:#8ec07c;">style=</span><span style="color:#b8bb26;">&quot;</span><span style="color:#8ec07c;">background-color</span><span style="color:#fdf4c1;">:{{bgcolor}};</span><span style="color:#b8bb26;">&quot;</span><span style="color:#83a598;">/&gt;
+</span><span>{% else %}
+</span><span>    
+</span><span>    </span><span style="color:#83a598;">&lt;</span><span style="font-weight:bold;color:#8ec07c;">img </span><span style="color:#8ec07c;">src=</span><span style="color:#b8bb26;">&quot;{{ get_url(path=img_path) }}&quot; </span><span style="color:#8ec07c;">style=</span><span style="color:#b8bb26;">&quot;</span><span style="color:#8ec07c;">background-color</span><span style="color:#fdf4c1;">:{{bgcolor}};</span><span style="color:#b8bb26;">&quot;</span><span style="color:#83a598;">/&gt;
+</span><span>{% endif %}
+</span></code></pre>
+<p>I can easily call it from my markdown document with</p>
+<pre data-lang="markdown" style="background-color:#282828;color:#fdf4c1aa;" class="language-markdown "><code class="language-markdown" data-lang="markdown"><span>{{ imgbg(path=&quot;./img.png&quot;, resize=false, bgcolor=&quot;white&quot;) }}
+</span></code></pre>
+<p>There is still a lot left to do but for now I am happy with the result.</p>
+
+    </div>
+    
+
+    
+</article>
+
+
+    <footer>
+        <p>
+            
+<span class="icon-text">
+  
+
+  
+
+  
+  <a href="https://github.com/gitabaz" aria-label="Open gitabaz GitHub" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-github fa-lg" aria-hidden="true" title="GitHub"></i>
+    </span>
+  </a>
+  
+
+  
+  <a href="https://www.linkedin.com/in/azabalo" aria-label="Open azabalo LinkedIn" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true" title="LinkedIn"></i>
+    </span>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a href="https://scholar.google.com/citations?user=RrJeRTkAAAAJ" aria-label="Open RrJeRTkAAAAJ Google Scholar" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-google-scholar fa-lg" aria-hidden="true" title="Google Scholar"></i>
+    </span>
+  </a>
+  
+
+  
+</span>
+
+        </p>
+        <p>
+            
+            
+        </p>
+    </footer>
+</div>
+</body>
+</html>

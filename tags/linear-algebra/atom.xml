@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Zabalo - linear algebra</title>
+    <link rel="self" type="application/atom+xml" href="https://gitabaz.github.io/tags/linear-algebra/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://gitabaz.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2019-10-08T17:41:16-04:00</updated>
+    <id>https://gitabaz.github.io/tags/linear-algebra/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Random matrix theory - Basics</title>
+        <published>2019-10-08T17:41:16-04:00</published>
+        <updated>2019-10-08T17:41:16-04:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://gitabaz.github.io/blog/rmt-basics/"/>
+        <id>https://gitabaz.github.io/blog/rmt-basics/</id>
+        
+        <content type="html" xml:base="https://gitabaz.github.io/blog/rmt-basics/">&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;a class=&quot;zola-anchor&quot; href=&quot;#introduction&quot; aria-label=&quot;Anchor link for: introduction&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;The first time I heard the term &lt;strong&gt;Random Matrix Theory&lt;&#x2F;strong&gt; (RMT) was at the
+&lt;a href=&quot;http:&#x2F;&#x2F;www.physics.rutgers.edu&#x2F;colloquium&#x2F;&quot;&gt;Wednesday physics colloquium&lt;&#x2F;a&gt;
+given by one of the faculty members at Rutgers. Immediately, I was intrigued by
+the idea of bringing together two of the most useful concepts in math:
+statistics and linear algebra. It wasn&#x27;t obvious to me what we could learn from
+studying random matrices but the more research I did into the field, the more I
+realized that their usage was spreading across the different branches of
+science.&lt;&#x2F;p&gt;
+&lt;p&gt;In an effort to learn the basics, I read through multiple sets of lecture notes
+and articles looking for examples that would build on my background and
+familiarity with physics. The simplest (and most helpful) example that I found
+that illustrated the concepts of RMT was the exact result for the 2x2 Gaussian
+Orthogonal Ensemble (GOE) level repulsion. Before we get into the details and
+significance of GOE, level repulsion, and other concepts let&#x27;s take a look at
+the example.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;the-2x2-example&quot;&gt;The 2x2 Example&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-2x2-example&quot; aria-label=&quot;Anchor link for: the-2x2-example&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;h2 id=&quot;random-variables&quot;&gt;Random Variables&lt;a class=&quot;zola-anchor&quot; href=&quot;#random-variables&quot; aria-label=&quot;Anchor link for: random-variables&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;If you&#x27;re familiar with statistics, you&#x27;ll understand the concept of &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Random_variable&quot;&gt;random
+variables&lt;&#x2F;a&gt;. To summarize, a
+random variable $X$ is one whose value is sampled from a distribution. The
+classic examples of discrete random variables are the result of a coin toss or
+dice roll. Examples of continuous random variables are those that sample from a
+Gaussian or uniform distribution.&lt;&#x2F;p&gt;
+&lt;p&gt;In any case, a &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Normal_distribution&quot;&gt;normally
+distributed&lt;&#x2F;a&gt; random variable
+is often written as $X\sim\mathcal{N}(\mu,\sigma^2)$ meaning that the values of
+$X$ are sampled from a Gaussian distribution with mean $\mu$ and standard
+deviation $\sigma$. In other words the &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Probability_density_function&quot;&gt;probability density function
+(pdf)&lt;&#x2F;a&gt; of $X$,
+$f_X(x)$, is given by
+\begin{equation}
+f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp \left[-\frac{(x-\mu)^2}{2\sigma^2}\right]
+\end{equation}
+so that the probability that the value of $X$ lies between $a$ and $b$ is given by
+\begin{equation}
+\Pr[a \leq X \leq b] = \int_a^b dx f_X(x).
+\end{equation}&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;random-matrices&quot;&gt;Random Matrices&lt;a class=&quot;zola-anchor&quot; href=&quot;#random-matrices&quot; aria-label=&quot;Anchor link for: random-matrices&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;With the concept of random variables, we can now introduce a random matrix. A
+random matrix is simply a matrix whose entries are random variables. The
+Gaussian Orthogonal Ensemble mentioned before is an ensemble of real symmetric
+random matrices whose entries are normally distributed random variables.
+Consider the GOE containing matrices of the form
+\begin{equation}
+\begin{bmatrix}X_1 &amp;amp; X_3 \\X_3 &amp;amp; X_2\end{bmatrix}
+\label{eq:goe}
+\end{equation}
+with $X_1\sim\mathcal{N}(0,1)$, $X_2\sim\mathcal{N}(0,1)$, and
+$X_3\sim\mathcal{N}(0,\frac{1}{2})$.
+Sampling from this ensemble will give matrices that look like
+\begin{equation}
+\begin{bmatrix}0.554030 &amp;amp; -0.471710 \\ -0.471710 &amp;amp; -0.124200\end{bmatrix}
+\end{equation}&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;separation-between-eigenvalues&quot;&gt;Separation Between Eigenvalues&lt;a class=&quot;zola-anchor&quot; href=&quot;#separation-between-eigenvalues&quot; aria-label=&quot;Anchor link for: separation-between-eigenvalues&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;What can we learn from generating matrices from the ensemble described by Eq.
+$\eqref{eq:goe}$? The answer is usually in the spectral properties, i.e. the
+properties of the eigenvalues. One question we might like to answer is: &lt;em&gt;what
+is the typical spacing between eigenvalues?&lt;&#x2F;em&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;To approach this problem we need to diagonalize a random matrix. Although this
+may seem strange it is actually straight forward. Take Eq. \eqref{eq:goe} and
+do the usual diagonalization procedure i.e. set
+\begin{equation}
+\det \begin{bmatrix}(X_1 - \lambda ) &amp;amp; X_3 \\X_3 &amp;amp; (X_2 -\lambda ) \end{bmatrix} = 0
+\end{equation}
+and solve for $\lambda$.
+For a 2x2 matrix this can be easily solved to give
+\begin{equation}
+\lambda_{\pm} = \frac{X_1 + X_2 \pm \sqrt{(X_1-X_2)^2 + 4 X_3^2}}{2}
+\label{eq:ev}.
+\end{equation}
+The spacing, $s$, is then given by
+\begin{equation}
+s = \lambda_+ - \lambda_- = \sqrt{(X_1-X_2)^2 + 4 X_3^2}
+\label{eq:spa}.
+\end{equation}
+Since $s$ is a function of random variables, it itself is a random variable and we can find its pdf, i.e. the probability distribution of the spacing between the eigenvalues. This is given by:
+\begin{equation}
+p(s) = \int_{-\infty}^{\infty} dx_1 dx_2 dx_3 \frac{e^{-\frac{1}{2}x_1^2}}{\sqrt{2\pi}}\frac{e^{-\frac{1}{2}x_2^2}}{\sqrt{2\pi}}\frac{e^{-x_3^2}}{\sqrt{\pi}}\delta(s-\sqrt{(x_1-x_2)^2 + 4 x_3^2})
+\label{eq:psfull}
+\end{equation}
+To proceed it is helpful to introduce new variables $r,\theta,\psi$ defined
+through
+\begin{equation}
+\begin{cases}
+x_1 - x_2 = r\cos(\theta) \\&lt;br &#x2F;&gt;
+2x_3 = r\sin(\theta) \\&lt;br &#x2F;&gt;
+x_1 + x_2 = \psi
+\end{cases}
+\end{equation}
+Upon substitution into Eq. $\eqref{eq:psfull}$ we obtain
+\begin{equation}
+p(s) = \int_{0}^{\infty} dr ~r\delta(s-r) \int_{0}^{2\pi} d\theta \int_{-\infty}^{\infty} d\psi ~e^{-\frac{1}{2}\left[\left(\frac{r\cos(\theta)+\psi}{2}\right)^2+\left(\frac{-r\cos(\theta)+\psi}{2}\right)^2+\frac{r^2\sin^2(\theta)}{2}\right]}
+\end{equation}
+\begin{equation}
+p(s) = \frac{s}{2}e^{-s^2 &#x2F;4}
+\end{equation}
+We can rescale our result by the mean level spacing, $\langle s \rangle =
+\sqrt{\pi}$ and the final result is known as Wigner&#x27;s Surmise:
+\begin{equation}
+p(s) = \frac{\pi s}{2}e^{-\frac{1}{4}\pi s^2}
+\label{eq:wigsur}
+\end{equation}
+From Eq. $\eqref{eq:wigsur}$ we see that the probability that two eigenvalues
+are either very close together or very far apart vanishes. This behavior is
+known as level repulsion and is a generic feature of correlated random
+variables. If we were to look at the probability distribution of the seperation
+between uncorrelated random variables, we would see something drastically
+different. In fact, we find that the separation is given by $p(s) = e^{-s}$ and
+we see that the random variables do &lt;em&gt;not&lt;&#x2F;em&gt; repel but rather attract.&lt;&#x2F;p&gt;
+
+    
+    
+    
+
+
+
+    &lt;img src=&quot;https:&#x2F;&#x2F;gitabaz.github.io&#x2F;blog&#x2F;rmt-basics&#x2F;wig_pois_sep.png&quot; style=&quot;background-color:white;&quot;&#x2F;&gt;
+
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;a class=&quot;zola-anchor&quot; href=&quot;#summary&quot; aria-label=&quot;Anchor link for: summary&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;The idea that we can learn anything by studying random matrices may be quite
+surprising. At first glance it seems that there is not much to gain by studying
+a matrix made up of independent random variables. However, by studying the
+spectral properites of these matrices we find that there are correlations in
+the spectrum as a result of trading the description of an $N\times N$ matrix of
+random variables to a description using its $N$ eigenvalues. We have seen level
+repulsion as one example of many generic features that arise in correlated
+systems. In physics, the most interesting problems arise when the correlations
+between the particles are strong and often times random matrix theory finds its
+way into the description.&lt;&#x2F;p&gt;
+&lt;p&gt;The example above is based on the notes by &lt;a href=&quot;https:&#x2F;&#x2F;arxiv.org&#x2F;abs&#x2F;1712.07903&quot;&gt;Livan, Novaes, and
+Vivo&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

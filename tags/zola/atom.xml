@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Zabalo - zola</title>
+    <link rel="self" type="application/atom+xml" href="https://gitabaz.github.io/tags/zola/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://gitabaz.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-09-13T08:35:26-04:00</updated>
+    <id>https://gitabaz.github.io/tags/zola/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Site refresh (Hugo $\rightarrow$ Zola)</title>
+        <published>2024-09-13T08:35:26-04:00</published>
+        <updated>2024-09-13T08:35:26-04:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://gitabaz.github.io/blog/site-refresh-hugo-to-zola/"/>
+        <id>https://gitabaz.github.io/blog/site-refresh-hugo-to-zola/</id>
+        
+        <content type="html" xml:base="https://gitabaz.github.io/blog/site-refresh-hugo-to-zola/">&lt;p&gt;It has been a while since I have updated this site. A big reason for this is
+that I built a new computer and did not have the required Hugo files to
+continue updating the site. I only ever pushed the &lt;code&gt;public&lt;&#x2F;code&gt; folder to github
+and not the actual Hugo site development files. At some point, I copied over
+the minimum required files (the posts, css, etc.) so that I could one day
+rebuild everything. That day is today! A lot has changed since I last used Hugo
+but it is just as confusing as I remember (now with even more added confusion?
+what are&#x2F;when to use modules?). In any case, we are going to rebuild the site
+from the ground up and copy over files as necessary to maintain the same look
+of the original version.&lt;&#x2F;p&gt;
+&lt;p&gt;I started this post to document the setup of the website but along the way I
+ran into a number of issues which made the refresh a pain. Some of the pain
+points include:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Content pages are now created with frontmatter in toml instead of yaml.&lt;&#x2F;li&gt;
+&lt;li&gt;Trying to build a &quot;hello world&quot; of sorts with no added themes just fails due
+to missing files.&lt;&#x2F;li&gt;
+&lt;li&gt;Installing a theme is inconsistent: documentation says to use git submodules
+but many themes are now using Hugo modules.&lt;&#x2F;li&gt;
+&lt;li&gt;After finding a theme I liked, I had to go through multiple hoops such as
+upgrading to a newer extended version of Hugo, update some write permissions
+to &lt;code&gt;.cache&lt;&#x2F;code&gt;, having to install and updated version of npm and nodejs, and npm
+installing a ton of packages (see image below).&lt;&#x2F;li&gt;
+&lt;li&gt;Even then, I couldn&#x27;t get the theme to work properly as the json resume
+feature was failing for some reason.&lt;&#x2F;li&gt;
+&lt;li&gt;In order to get math equations to render the theme comes with some basic
+instructions to setup katex. Unfortunately, katex is missing features such as
+equation labels which I tend to use a lot. It also did not properly display
+inline equations and was rendering them twice.
+
+    
+    
+    
+
+
+
+    
+    &lt;img src=&quot;https:&amp;#x2F;&amp;#x2F;gitabaz.github.io&amp;#x2F;processed_images&amp;#x2F;theme_node_packages.6a9c93a399dfc2a9.png&quot; style=&quot;background-color:transparent;&quot;&#x2F;&gt;
+
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;I always seem to have difficulties when working with Hugo. I tried reading
+through the documentation but it is so scattered that I end up having 3-4 tabs
+per topic I am trying to understand. I ended up deciding to switch to a
+different static site generator, preferably one that was simpler and not
+node&#x2F;js based. After reading a few blog posts, I noticed other people have had
+the same difficulty working with Hugo
+[&lt;a href=&quot;https:&#x2F;&#x2F;mrkaran.dev&#x2F;posts&#x2F;migrating-to-zola&#x2F;&quot;&gt;1&lt;&#x2F;a&gt;,
+&lt;a href=&quot;https:&#x2F;&#x2F;www.kytta.dev&#x2F;blog&#x2F;one-week-with-zola&#x2F;&quot;&gt;2&lt;&#x2F;a&gt;,
+&lt;a href=&quot;https:&#x2F;&#x2F;www.xypnox.com&#x2F;blag&#x2F;posts&#x2F;migrating-to-zola&#x2F;&quot;&gt;3&lt;&#x2F;a&gt;] and switched to
+&lt;em&gt;Zola&lt;&#x2F;em&gt;. Zola is supposed to be much simpler to use and my experience was just
+that.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;setting-up-zola&quot;&gt;Setting up Zola&lt;a class=&quot;zola-anchor&quot; href=&quot;#setting-up-zola&quot; aria-label=&quot;Anchor link for: setting-up-zola&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The documentation has a nick quickstart tutorial that shows up to get up and
+running and build some templates. After following the initial set up steps&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;$ zola init &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;mywebsite&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Welcome to Zola!
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Please answer a few questions to get started quickly.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Any choices made can be changed by modifying the `config.toml` file later.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; What &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;is the URL of your site&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;?&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt; (https:&#x2F;&#x2F;example.com&lt;&#x2F;span&gt;&lt;span&gt;)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;:&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt; https:&#x2F;&#x2F;example.com
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; Do &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;you want to enable Sass compilation&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Y&#x2F;n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;: Y
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; Do &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;you want to enable syntax highlighting&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;y&#x2F;N&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;: y
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt; Do &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;you want to build a search index of the content&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;y&#x2F;N&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;: y
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;the resulting directory structure is&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;├── config.toml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;├── content
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;├── public
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│   ├── elasticlunr.min.js
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;│   └── search_index.en.js
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;├── sass
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;├── static
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;├── templates
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;└── themes
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I tried to immediately view the site with&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;$ zola serve
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;and visiting &lt;code&gt;localhost:1111&lt;&#x2F;code&gt;; and to my surprise it just worked! I saw a
+&quot;Welcome to Zola!&quot; page with a message indicating there was no template to
+render so it was showing a default page and some recommendations for how to
+proceed. Already off to a much better start than with Hugo.&lt;&#x2F;p&gt;
+&lt;p&gt;I continued following the basic &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;getting-started&#x2F;overview&#x2F;&quot;&gt;getting started
+tutorial&lt;&#x2F;a&gt; to
+get a feel for how Zola works. Overall, it seems intuitive and
+straight-forward. I like how all of the configuration options are listed on a
+single
+&lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;getting-started&#x2F;configuration&#x2F;&quot;&gt;page&lt;&#x2F;a&gt;.
+The same is true for other settings such as the &lt;a href=&quot;https:&#x2F;&#x2F;www.getzola.org&#x2F;documentation&#x2F;content&#x2F;page&#x2F;&quot;&gt;frontmatter
+options&lt;&#x2F;a&gt; of a page.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;customization&quot;&gt;Customization&lt;a class=&quot;zola-anchor&quot; href=&quot;#customization&quot; aria-label=&quot;Anchor link for: customization&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;With the basics out of the way, I went straight into downloading a theme for
+the site. The recommended way is to just do a &lt;code&gt;git clone&lt;&#x2F;code&gt; in the themes folder
+but I opted to add the theme as a submodule similar to what I did before when
+using Hugo. This is because my site directory is a git repository itself.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;git submodule add https:&#x2F;&#x2F;github.com&#x2F;justint&#x2F;papaya.git themes&#x2F;papaya
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;In order to get mathjax rendering I simply added the fields in &lt;code&gt;config.toml&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;toml&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-toml &quot;&gt;&lt;code class=&quot;language-toml&quot; data-lang=&quot;toml&quot;&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;extra&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;mathjax &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;true
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;extra.cdn&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;mathjax &lt;&#x2F;span&gt;&lt;span&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3&#x2F;es5&#x2F;tex-mml-chtml.js&amp;quot;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;and then placed the code below into my copy of &lt;code&gt;templates&#x2F;base.html&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;html&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span&gt;{% if config.extra.mathjax %}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;script&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;window&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;.MathJax &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;{
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;        tex: {
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;        inlineMath: [[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;#39;$&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;#39;$&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;], [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;#39;\\(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;#39;\\)&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;]],
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;                    tags: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;#39;ams&amp;#39;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;             }
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;        };
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;script&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;script &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;id&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;MathJax-script&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;async src=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;{{&#x2F;* &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;config.extra.cdn.mathjax *&#x2F;}} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;script&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;{% endif %}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This makes it so that I can enable&#x2F;disable including the mathjax js file by
+switching a flag in &lt;code&gt;config.toml&lt;&#x2F;code&gt;. Since the include happens in the &lt;code&gt;base.html&lt;&#x2F;code&gt;
+file it means that all site pages will have the import. It will probably be
+better to move this flag into the page frontmatter so that we don&#x27;t import it
+when it&#x27;s not used but this also lets us use latex everywhere which is nice.
+The order of the scripts seems to be important as I was having difficulty
+rendering inline math on chrome with the reversed order.&lt;&#x2F;p&gt;
+&lt;p&gt;Overall the setup was simple but I did run into some issues. Two things I
+struggled with were: getting the site to compile due a missing &lt;code&gt;banner.jpg&lt;&#x2F;code&gt;
+file and getting syntax highlighting to use the colorschemes I wanted. For the
+image issue, the image was in the theme&#x27;s static folder
+&lt;code&gt;themes&#x2F;&amp;lt;themename&amp;gt;&#x2F;static&lt;&#x2F;code&gt; so I thought it would be found by Zola. I spent a
+lot of time trying to figure out why it couldn&#x27;t find it and I&#x27;m still not 100%
+sure, but I believe it is because the image was being modified through a
+shortcode and so it needs to be at the point of origin. For the colorscheme
+issue, I am unable to change the colorscheme using a css file and the visitor&#x27;s
+light&#x2F;dark mode preferences. It always defaults to material-light&#x2F;material-dark
+even though I set it as gruvbox-light&#x2F;gruvbox-dark. Other than those issues,
+everything else was smooth sailing and a lot of my confusion was cleared up by
+reading the documentation.&lt;&#x2F;p&gt;
+&lt;p&gt;The templating engine used, &lt;a href=&quot;https:&#x2F;&#x2F;keats.github.io&#x2F;tera&#x2F;&quot;&gt;Tera&lt;&#x2F;a&gt; is simple
+enough that I was able to edit the theme defaults and include some additional
+features. One example is writing my own shortcode for adding a background color
+to a transparent image and allowing for the option to resize it. By creating a
+file &lt;code&gt;templates&#x2F;shortcodes&#x2F;imgbg.html&lt;&#x2F;code&gt; with the code&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;html&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-html &quot;&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span&gt;{% if path is starting_with(&amp;quot;.&#x2F;&amp;quot;) %}
+&lt;&#x2F;span&gt;&lt;span&gt;    {% set relative_path = page.relative_path | split(pat=&amp;quot;&#x2F;&amp;quot;) | slice(end=-1) | join(sep=&amp;quot;&#x2F;&amp;quot;) %}
+&lt;&#x2F;span&gt;&lt;span&gt;    {% set img_path = path | trim_start_matches(pat=&amp;quot;.&#x2F;&amp;quot;) %}
+&lt;&#x2F;span&gt;&lt;span&gt;    {% set img_path = relative_path ~ &amp;quot;&#x2F;&amp;quot; ~ img_path %}
+&lt;&#x2F;span&gt;&lt;span&gt;{% else %}
+&lt;&#x2F;span&gt;&lt;span&gt;    {% set img_path = path %}
+&lt;&#x2F;span&gt;&lt;span&gt;{% endif %}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;{% if resize == true %}
+&lt;&#x2F;span&gt;&lt;span&gt;    {% set image = resize_image(path=img_path, width=width, height=height, op=op) %}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;img &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;src=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;{{ image.url }}&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;style=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;background-color&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;:{{bgcolor}};&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;{% else %}
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;font-weight:bold;color:#8ec07c;&quot;&gt;img &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;src=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;{{ get_url(path=img_path) }}&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;style=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;background-color&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;:{{bgcolor}};&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#83a598;&quot;&gt;&#x2F;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;{% endif %}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;I can easily call it from my markdown document with&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;markdown&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-markdown &quot;&gt;&lt;code class=&quot;language-markdown&quot; data-lang=&quot;markdown&quot;&gt;&lt;span&gt;{{ imgbg(path=&amp;quot;.&#x2F;img.png&amp;quot;, resize=false, bgcolor=&amp;quot;white&amp;quot;) }}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;There is still a lot left to do but for now I am happy with the result.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

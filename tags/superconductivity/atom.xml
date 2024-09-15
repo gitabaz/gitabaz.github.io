@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Zabalo - superconductivity</title>
+    <link rel="self" type="application/atom+xml" href="https://gitabaz.github.io/tags/superconductivity/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://gitabaz.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2020-08-22T00:00:00+00:00</updated>
+    <id>https://gitabaz.github.io/tags/superconductivity/atom.xml</id>
+    <entry xml:lang="en">
+        <title>BCS dynamics</title>
+        <published>2020-08-22T00:00:00+00:00</published>
+        <updated>2020-08-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://gitabaz.github.io/projects/bcs-dynamics/"/>
+        <id>https://gitabaz.github.io/projects/bcs-dynamics/</id>
+        
+        <content type="html" xml:base="https://gitabaz.github.io/projects/bcs-dynamics/">&lt;h3 id=&quot;quantum-quench-dynamics-of-a-p-wave-superfluid&quot;&gt;Quantum quench dynamics of a $p$-wave superfluid&lt;&#x2F;h3&gt;
+&lt;p&gt;The search for a robust platform capable of quantum simulation and computation
+has led to a growing interest in superfluids with $p + ip$ pairing symmetry.
+These superfluids are expected to possess zero-energy Majorana bound states
+which could exhibit the non-abelian statistics necessary for a topological
+quantum computer. We are interested in studying the non-equilibrium quench
+dynamics of the two dimensional BCS Hamiltonian with $p$-wave symmetry using
+numerical techniques. It is known how a system which begins in a $p + ip$ state
+of the $p$-wave Hamiltonian evolves due to its integrability, but we would like
+to investigate the stability of the dynamics when this integrability is broken.&lt;&#x2F;p&gt;
+&lt;p&gt;Representative works:
+&lt;a href=&quot;https:&#x2F;&#x2F;journals.aps.org&#x2F;prb&#x2F;abstract&#x2F;10.1103&#x2F;PhysRevB.104.104505&quot;&gt;1&lt;&#x2F;a&gt;,
+&lt;a href=&quot;https:&#x2F;&#x2F;www.sciencedirect.com&#x2F;science&#x2F;article&#x2F;abs&#x2F;pii&#x2F;S0003491621001603&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Zabalo - tricks</title>
+    <link rel="self" type="application/atom+xml" href="https://gitabaz.github.io/tags/tricks/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://gitabaz.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2022-08-11T07:26:54-04:00</updated>
+    <id>https://gitabaz.github.io/tags/tricks/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Combinatorics through complex analysis</title>
+        <published>2022-08-11T07:26:54-04:00</published>
+        <updated>2022-08-11T07:26:54-04:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://gitabaz.github.io/blog/combinatorics-through-complex-analysis/"/>
+        <id>https://gitabaz.github.io/blog/combinatorics-through-complex-analysis/</id>
+        
+        <content type="html" xml:base="https://gitabaz.github.io/blog/combinatorics-through-complex-analysis/">&lt;p&gt;In a recent project I came across the following problem: Evaluate
+\begin{equation}
+a_{N,z} = \sum_{\{\alpha\} \in \mathcal{A}_{N,z}} \prod_{\alpha} e^{-\frac{2\pi\eta\alpha}{N}}
+\label{eq:exact_az}
+\end{equation}
+where $\mathcal{A}_{N,z}$ contains all sets with $z$ unique integers chosen
+from $\{1,\ldots,N\}$ and $\{\alpha\}$ labels a particular set. To clarify
+what this means, consider the case where $N = 4$ and $z=2$. The sum we are
+interested in runs over the terms
+\begin{equation}
+\mathcal{A}_{N=4,z=2} =
+\{
+\{1,2\},
+\{1,3\},
+\{1,4\},
+\{2,3\},
+\{2,4\},
+\{3,4\}
+\}
+\end{equation}
+so that
+\begin{equation}
+a_{N=4,z=2} =
+e^{-\frac{2\pi\eta(1 + 2)}{N}} +
+e^{-\frac{2\pi\eta(1 + 3)}{N}} +
+e^{-\frac{2\pi\eta(1 + 4)}{N}} +
+e^{-\frac{2\pi\eta(2 + 3)}{N}} +
+e^{-\frac{2\pi\eta(2 + 4)}{N}} +
+e^{-\frac{2\pi\eta(3 + 4)}{N}}.
+\end{equation}
+For arbitrary $N$ and $z$ there are $\binom{N}{z}$ of these terms so that when
+$N$ gets large and $z$ is $O(N)$ carrying out the sum directly becomes
+unfeasible. However, there is a nice trick we can use that connects
+combinatorics with complex analysis and allows us to evaluate the result in the
+large $N$ limit.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;helper-function&quot;&gt;Helper function&lt;a class=&quot;zola-anchor&quot; href=&quot;#helper-function&quot; aria-label=&quot;Anchor link for: helper-function&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The first step is to introduce the helper function
+\begin{equation}
+\prod_{j=1}^N \left(1 + te^{-\frac{2\pi\eta j}{N}} \right) = \sum_{r=0}^N a_{N,r} t^r
+\label{eq:helper_func}
+\end{equation}
+and notice that it is a polynomial in $t$ whose coefficients $a_{N,r}$ are
+exactly the sums we are trying to evaluate. To see this, consider again the
+case where $N=4$. Expanding the left hand side of Eq. $\eqref{eq:helper_func}$
+\begin{align}
+1 + \notag \\
+t   \left( e^{-\frac{2\pi\eta 1}{N}} + e^{-\frac{2\pi\eta 2}{N}} + e^{-\frac{2\pi\eta 3}{N}} + e^{-\frac{2\pi\eta 4}{N}} \right) + \notag \\
+t^2 \left( e^{-\frac{2\pi\eta (1+2)}{N}} + e^{-\frac{2\pi\eta (1+3)}{N}} + e^{-\frac{2\pi\eta (1+4)}{N}} + e^{-\frac{2\pi\eta (2+3)}{N}} + e^{-\frac{2\pi\eta (2+4)}{N}} + e^{-\frac{2\pi\eta (3+4)}{N}} \right) + \\
+t^3 \left( e^{-\frac{2\pi\eta (1+2+3)}{N}} + e^{-\frac{2\pi\eta (1+2+4)}{N}} + e^{-\frac{2\pi\eta (1+3+4)}{N}} + e^{-\frac{2\pi\eta (2+3+4)}{N}} \right) + \notag \\
+t^4 \left( e^{-\frac{2\pi\eta (1 + 2 + 3 + 4)}{N}}\right) \notag
+\end{align}
+we see that the coefficient of the $t^2$ term is exactly $a_{N=4, z=2}$. In
+order to pick out the term that we are interested in ($r=z$) we rewrite the
+parameter $t$ as $t=e^{-i\phi}$ and multiply by
+$(2\pi)^{-1}\int_{-\pi}^{\pi} \mathrm{d}\phi e^{i\phi z}$.
+Applying the transformation to the right hand side of Eq. $\eqref{eq:helper_func}$
+first we see that we get exactly what we wanted
+\begin{equation}
+\frac{1}{2\pi}\sum_{r=0}^N a_{N,r} \int_{-\pi}^{\pi} \mathrm{d}\phi e^{-i\phi (r-z)} =
+\sum_{r=0}^N a_{N,r}\delta_{r,z} = a_{N,z},
+\end{equation}
+where we have interchanged the order of the sum and integral and used the
+definition of the &lt;a href=&quot;https:&#x2F;&#x2F;mathworld.wolfram.com&#x2F;DeltaFunction.html&quot;&gt;delta function&lt;&#x2F;a&gt;
+in terms of its Fourier transform. Therefore, we have
+\begin{equation}
+a_{N,z} =
+\frac{1}{2\pi} \int_{-\pi}^{\pi} \mathrm{d}\phi
+\left[
+e^{i\phi z}
+\prod_{j=1}^N \left(1 + e^{-i\phi}e^{-\frac{2\pi\eta j}{N}} \right)
+\right].
+\end{equation}&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-large-n-limit&quot;&gt;The large $N$ limit&lt;a class=&quot;zola-anchor&quot; href=&quot;#the-large-n-limit&quot; aria-label=&quot;Anchor link for: the-large-n-limit&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;To evaluate the integral in the large $N$ limit, we use the
+&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Method_of_steepest_descent&quot;&gt;saddle-point method&lt;&#x2F;a&gt;.
+It is convenient to rewrite the above equation as
+\begin{equation}
+a_{N,z} =
+\frac{1}{2\pi} \int_{-\pi}^{\pi} \mathrm{d}\phi e^{z f(\phi)};
+\quad
+f(\phi) = i\phi + \frac{1}{z}\sum_{j=1}^N \ln \left[1 + e^{-i\phi}e^{-\frac{2\pi\eta j}{N}}\right],
+\end{equation}
+and take $z, N \to \infty$ with $z&#x2F;N = \mathrm{const}$.
+An important step is to find the stationary point $\phi_0$, where
+$f&#x27;(\phi_0) = 0$, and the second derivative $f&#x27;&#x27;(\phi_0)$.
+By turning the sum over $j$ to an integral over $x = j&#x2F;N$ we find
+\begin{equation}
+\phi_0 = -i \ln
+\left[
+\frac{e^{-\frac{2\pi\eta(N-z)}{N}} - 1}{1 - e^{\frac{2\pi\eta z}{N}}}
+\right]
+\quad \mathrm{and} \quad
+f&#x27;&#x27;(\phi_0) = -\frac{N\sinh\left[\pi\eta\right]}{4\pi\eta z}\sec\left[\frac{\phi_0}{2}\right]\mathrm{sech}\left[\pi\eta + \frac{\phi_0}{2}\right],
+\end{equation}
+up to $O(1&#x2F;N)$ corrections. These results can then be substitute into the
+saddle point equation
+\begin{equation}
+a_{N,z} = \frac{e^{zf(\phi_0)}}{\sqrt{-2\pi z f&#x27;&#x27;(\phi_0)}}.
+\end{equation}
+Note that it is important to keep sub-leading
+corrections to the integral when evaluating $f(\phi_0)$ since it introduces an
+overall prefactor to the result.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;final-result&quot;&gt;Final result&lt;a class=&quot;zola-anchor&quot; href=&quot;#final-result&quot; aria-label=&quot;Anchor link for: final-result&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h2&gt;
+&lt;p&gt;The final result is then
+\begin{equation}
+a_{N,z} =
+e^{-i\phi_0(N-z) - \pi\eta N}
+\left(
+\frac{1 + e^{-i\phi_0 - 2\pi\eta}}{1 + e^{-i\phi_0}}
+\right)^{\frac{1}{2}}
+e^{\frac{N}{2\pi\eta}\left(
+\mathrm{Li}_2\left[-e^{i\phi_0}\right] - \mathrm{Li}_2\left[-e^{i\phi_0 + 2\pi\eta}\right]
+\right)}
+\left[
+\frac{N\sinh\left[\pi\eta\right]}{2\eta}\sec\left[\frac{\phi_0}{2}\right]\mathrm{sech}\left[\pi\eta + \frac{\phi_0}{2}\right]
+\right]^{-\frac{1}{2}},
+\label{eq:approx_az}
+\end{equation}
+where $\mathrm{Li}_2(z)$ is the &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Polylogarithm&quot;&gt;polylogarithm&lt;&#x2F;a&gt;.
+Below we plot the exact expression (Eq. $\eqref{eq:exact_az}$) and the
+approximation (Eq. $\eqref{eq:approx_az}$) for $N=20$ and $\eta = 0.1$. We see
+that there is excellent agreement between the results.&lt;&#x2F;p&gt;
+
+    
+    
+    
+
+
+
+    &lt;img src=&quot;https:&#x2F;&#x2F;gitabaz.github.io&#x2F;blog&#x2F;combinatorics-through-complex-analysis&#x2F;az_N20_eta0.1.png&quot; style=&quot;background-color:white;&quot;&#x2F;&gt;
+
+</content>
+        
+    </entry>
+</feed>

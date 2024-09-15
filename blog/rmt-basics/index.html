@@ -1,100 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
 <head>
-<title>  </title>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
 
-<link rel="stylesheet" href="/css/menu.css">
-<link rel="stylesheet" href="/css/style.css">
+    <title>Random matrix theory - Basics - Zabalo</title>
+    <meta name="description" content="">
+
+    
+    <link rel="stylesheet" href="https://gitabaz.github.io/base.css">
+    <link rel="stylesheet" href="https://gitabaz.github.io/auto.css">
+
+    <link rel="preload" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css></noscript>
+
+    
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                tags: 'ams'
+            }
+        }
+    </script>
+    <script id="MathJax-script" async src=https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3&#x2F;es5&#x2F;tex-mml-chtml.js ></script>
+    
+
+    
+    
+    <meta property="og:title" content="Random matrix theory - Basics">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="https://gitabaz.github.io/about/">
+    <meta property="article:published_time" content="2019-10-08T17:41:16-04:00">
+    
+    
+    <meta property="article:tag" content="physics">
+    
+    <meta property="article:tag" content="math">
+    
+    <meta property="article:tag" content="random">
+    
+    <meta property="article:tag" content="linear algebra">
+    
+    <meta property="article:tag" content="statistics">
+    
+    
+    
+    
+    <meta property="og:url" content="https://gitabaz.github.io/blog/rmt-basics/">
+    
+    
 
 
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[','\]']],
-    processEscapes: true,
-    processEnvironments: true,
-    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code'],
-    TeX: { equationNumbers: { autoNumber: "AMS" },
-         extensions: ["AMSmath.js", "AMSsymbols.js"] }
-  }
-});
-</script>
-
-
+    
+    
 </head>
+<body>
+<div class="container">
+    
+    
+    <header>
+        <h1 class="site-header">
+            <a href="https:&#x2F;&#x2F;gitabaz.github.io">Zabalo</a>
+        </h1>
+        <nav>
+            <ul>
+            
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;">Home</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;projects&#x2F;">Projects</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;blog&#x2F;">Blog</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;tags&#x2F;">Tags</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;about&#x2F;">About</a></li>
+            
+            
+            </ul>
+        </nav>
+    </header>
+    
+    
 
+<article class="post">
+    
+    
+    
+        
+        <header>
+            <h1>Random matrix theory - Basics</h1>
+        </header>
+        
+    <div class="article-info">
+        
+        
+        <div class="article-date">October  8, 2019 ◦ 6 min ◦ </div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://gitabaz.github.io/tags/physics/">#physics</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/math/">#math</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/random/">#random</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/linear-algebra/">#linear algebra</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/statistics/">#statistics</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
 
-
-
-<header id="header">
-<nav class="links" style="--items: 3;">
-	
-	
-		<a href="/">Home</a>
-	
-		<a href="/research/">Research</a>
-	
-		<a href="/blog/">Blog</a>
-	
-	<span class="line"></span>
-</nav>
-</header>
-
-
-<div class="content">
-	<h1>Random Matrix Theory - Basics</h1>
-	<hr>
-	<h1 id="introduction">Introduction</h1>
-<p>The first time I heard the term <strong>Random Matrix Theory</strong> (RMT) was at the <a href="http://www.physics.rutgers.edu/colloquium/">Wednesday physics colloquium</a> given by one of the faculty members at Rutgers. Immediately, I was intrigued by the idea of bringing together two of the most useful concepts in math: statistics and linear algebra. It wasn&rsquo;t obvious to me what we could learn from studying random matrices but the more research I did into the field, the more I realized that their usage was spreading across the different branches of science.</p>
-<p>In an effort to learn the basics, I read through multiple sets of lecture notes and articles looking for examples that would build on my background and familiarity with physics. The simplest (and most helpful) example that I found that illustrated the concepts of RMT was the exact result for the 2x2 Gaussian Orthogonal Ensemble (GOE) level repulsion. Before we get into the details and significance of GOE, level repulsion, and other concepts let&rsquo;s take a look at the example.</p>
-<h1 id="the-2x2-example">The 2x2 Example</h1>
-<h2 id="random-variables">Random Variables</h2>
-<p>If you&rsquo;re familiar with statistics, you&rsquo;ll understand the concept of <a href="https://en.wikipedia.org/wiki/Random_variable">random variables</a>. To summarize, a random variable $X$ is one whose value is sampled from a distribution. The classic examples of discrete random variables are the result of a coin toss or dice roll. Examples of continuous random variables are those that sample from a Gaussian or uniform distribution.</p>
-<p>In any case, a <a href="https://en.wikipedia.org/wiki/Normal_distribution">normally distributed</a> random variable is often written as $X\sim\mathcal{N}(\mu,\sigma^2)$ meaning that the values of $X$ are sampled from a Gaussian distribution with mean $\mu$ and standard deviation $\sigma$. In other words the <a href="https://en.wikipedia.org/wiki/Probability_density_function">probability density function (pdf)</a> of $X$, $f_X(x)$, is given by
-$$f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp \left[-\frac{(x-\mu)^2}{2\sigma^2}\right]\tag{1}$$
+    
+    
+    <div class="content">
+        <h1 id="introduction">Introduction<a class="zola-anchor" href="#introduction" aria-label="Anchor link for: introduction">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<p>The first time I heard the term <strong>Random Matrix Theory</strong> (RMT) was at the
+<a href="http://www.physics.rutgers.edu/colloquium/">Wednesday physics colloquium</a>
+given by one of the faculty members at Rutgers. Immediately, I was intrigued by
+the idea of bringing together two of the most useful concepts in math:
+statistics and linear algebra. It wasn't obvious to me what we could learn from
+studying random matrices but the more research I did into the field, the more I
+realized that their usage was spreading across the different branches of
+science.</p>
+<p>In an effort to learn the basics, I read through multiple sets of lecture notes
+and articles looking for examples that would build on my background and
+familiarity with physics. The simplest (and most helpful) example that I found
+that illustrated the concepts of RMT was the exact result for the 2x2 Gaussian
+Orthogonal Ensemble (GOE) level repulsion. Before we get into the details and
+significance of GOE, level repulsion, and other concepts let's take a look at
+the example.</p>
+<h1 id="the-2x2-example">The 2x2 Example<a class="zola-anchor" href="#the-2x2-example" aria-label="Anchor link for: the-2x2-example">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<h2 id="random-variables">Random Variables<a class="zola-anchor" href="#random-variables" aria-label="Anchor link for: random-variables">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>If you're familiar with statistics, you'll understand the concept of <a href="https://en.wikipedia.org/wiki/Random_variable">random
+variables</a>. To summarize, a
+random variable $X$ is one whose value is sampled from a distribution. The
+classic examples of discrete random variables are the result of a coin toss or
+dice roll. Examples of continuous random variables are those that sample from a
+Gaussian or uniform distribution.</p>
+<p>In any case, a <a href="https://en.wikipedia.org/wiki/Normal_distribution">normally
+distributed</a> random variable
+is often written as $X\sim\mathcal{N}(\mu,\sigma^2)$ meaning that the values of
+$X$ are sampled from a Gaussian distribution with mean $\mu$ and standard
+deviation $\sigma$. In other words the <a href="https://en.wikipedia.org/wiki/Probability_density_function">probability density function
+(pdf)</a> of $X$,
+$f_X(x)$, is given by
+\begin{equation}
+f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp \left[-\frac{(x-\mu)^2}{2\sigma^2}\right]
+\end{equation}
 so that the probability that the value of $X$ lies between $a$ and $b$ is given by
-$$\Pr[a \leq X \leq b] = \int_a^b dx f_X(x).\tag{2}$$</p>
-<h2 id="random-matrices">Random Matrices</h2>
-<p>With the concept of random variables, we can now introduce a random matrix. A random matrix is simply a matrix whose entries are random variables. The Gaussian Orthogonal Ensemble mentioned before is an ensemble of real symmetric random matrices whose entries are normally distributed random variables. Consider the GOE containing matrices of the form
-$$\begin{bmatrix}X_1 &amp; X_3 \\X_3 &amp; X_2\end{bmatrix}\tag{3}\label{eq:goe}$$
-with $X_1\sim\mathcal{N}(0,1)$, $X_2\sim\mathcal{N}(0,1)$, and $X_3\sim\mathcal{N}(0,\frac{1}{2})$.
+\begin{equation}
+\Pr[a \leq X \leq b] = \int_a^b dx f_X(x).
+\end{equation}</p>
+<h2 id="random-matrices">Random Matrices<a class="zola-anchor" href="#random-matrices" aria-label="Anchor link for: random-matrices">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>With the concept of random variables, we can now introduce a random matrix. A
+random matrix is simply a matrix whose entries are random variables. The
+Gaussian Orthogonal Ensemble mentioned before is an ensemble of real symmetric
+random matrices whose entries are normally distributed random variables.
+Consider the GOE containing matrices of the form
+\begin{equation}
+\begin{bmatrix}X_1 &amp; X_3 \\X_3 &amp; X_2\end{bmatrix}
+\label{eq:goe}
+\end{equation}
+with $X_1\sim\mathcal{N}(0,1)$, $X_2\sim\mathcal{N}(0,1)$, and
+$X_3\sim\mathcal{N}(0,\frac{1}{2})$.
 Sampling from this ensemble will give matrices that look like
-$$\begin{bmatrix}0.554030 &amp; -0.471710 \\ -0.471710 &amp; -0.124200\end{bmatrix}$$</p>
-<h2 id="separation-between-eigenvalues">Separation Between Eigenvalues</h2>
-<p>What can we learn from generating matrices from the ensemble described by Eq. $\ref{eq:goe}$? The answer is usually in the spectral properties, i.e. the properties of the eigenvalues. One question we might like to answer is: <em>what is the typical spacing between eigenvalues?</em></p>
-<p>To approach this problem we need to diagonalize a random matrix. Although this may seem strange it is actually straight forward. Take Eq. \ref{eq:goe} and do the usual diagonalization procedure i.e. set
-$$\det \begin{bmatrix}(X_1 - \lambda ) &amp; X_3 \\X_3 &amp; (X_2 -\lambda ) \end{bmatrix} = 0 \tag{4}$$
+\begin{equation}
+\begin{bmatrix}0.554030 &amp; -0.471710 \\ -0.471710 &amp; -0.124200\end{bmatrix}
+\end{equation}</p>
+<h2 id="separation-between-eigenvalues">Separation Between Eigenvalues<a class="zola-anchor" href="#separation-between-eigenvalues" aria-label="Anchor link for: separation-between-eigenvalues">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>What can we learn from generating matrices from the ensemble described by Eq.
+$\eqref{eq:goe}$? The answer is usually in the spectral properties, i.e. the
+properties of the eigenvalues. One question we might like to answer is: <em>what
+is the typical spacing between eigenvalues?</em></p>
+<p>To approach this problem we need to diagonalize a random matrix. Although this
+may seem strange it is actually straight forward. Take Eq. \eqref{eq:goe} and
+do the usual diagonalization procedure i.e. set
+\begin{equation}
+\det \begin{bmatrix}(X_1 - \lambda ) &amp; X_3 \\X_3 &amp; (X_2 -\lambda ) \end{bmatrix} = 0
+\end{equation}
 and solve for $\lambda$.
 For a 2x2 matrix this can be easily solved to give
-$$\lambda _{\pm} = \frac{X_1 + X_2 \pm \sqrt{(X_1-X_2)^2 + 4 X_3^2}}{2} \tag{5}\label{eq:ev}.$$
+\begin{equation}
+\lambda_{\pm} = \frac{X_1 + X_2 \pm \sqrt{(X_1-X_2)^2 + 4 X_3^2}}{2}
+\label{eq:ev}.
+\end{equation}
 The spacing, $s$, is then given by
-$$s = \lambda _+ - \lambda _- = \sqrt{(X_1-X_2)^2 + 4 X_3^2}\tag{6}\label{eq:spa}.$$
+\begin{equation}
+s = \lambda_+ - \lambda_- = \sqrt{(X_1-X_2)^2 + 4 X_3^2}
+\label{eq:spa}.
+\end{equation}
 Since $s$ is a function of random variables, it itself is a random variable and we can find its pdf, i.e. the probability distribution of the spacing between the eigenvalues. This is given by:
-$$p(s) = \int _{-\infty}^{\infty} dx_1 dx_2 dx_3 \frac{e^{-\frac{1}{2}x_1^2}}{\sqrt{2\pi}}\frac{e^{-\frac{1}{2}x_2^2}}{\sqrt{2\pi}}\frac{e^{-x_3^2}}{\sqrt{\pi}}\delta(s-\sqrt{(x_1-x_2)^2 + 4 x_3^2})\tag{6}\label{eq:psfull}$$
-To proceed it is helpful to introduce new variables $r,\theta,\psi$ defined through
-$$
+\begin{equation}
+p(s) = \int_{-\infty}^{\infty} dx_1 dx_2 dx_3 \frac{e^{-\frac{1}{2}x_1^2}}{\sqrt{2\pi}}\frac{e^{-\frac{1}{2}x_2^2}}{\sqrt{2\pi}}\frac{e^{-x_3^2}}{\sqrt{\pi}}\delta(s-\sqrt{(x_1-x_2)^2 + 4 x_3^2})
+\label{eq:psfull}
+\end{equation}
+To proceed it is helpful to introduce new variables $r,\theta,\psi$ defined
+through
+\begin{equation}
 \begin{cases}
-x_1 - x_2 = r\cos(\theta) \\<br>
-2x_3 = r\sin(\theta) \\<br>
+x_1 - x_2 = r\cos(\theta) \\<br />
+2x_3 = r\sin(\theta) \\<br />
 x_1 + x_2 = \psi
 \end{cases}
-$$
-Upon substitution into Eq. $\ref{eq:psfull}$ we obtain
-$$p(s) = \int _{0}^{\infty} dr ~r\delta(s-r) \int _{0}^{2\pi} d\theta \int _{-\infty}^{\infty} d\psi ~e^{-\frac{1}{2}\left[\left(\frac{r\cos(\theta)+\psi}{2}\right)^2+\left(\frac{-r\cos(\theta)+\psi}{2}\right)^2+\frac{r^2\sin^2(\theta)}{2}\right]}$$
-$$p(s) = \frac{s}{2}e^{-s^2 /4}$$
-We can rescale our result by the mean level spacing, $\langle s \rangle = \sqrt{\pi}$ and the final result is known as Wigner&rsquo;s Surmise:
-$$p(s) = \frac{\pi s}{2}e^{-\frac{1}{4}\pi s^2}\tag{7}\label{eq:wigsur}$$
-From Eq. $\ref{eq:wigsur}$ we see that the probability that two eigenvalues are either very close together or very far apart vanishes. This behavior is known as level repulsion and is a generic feature of correlated random variables.
-If we were to look at the probability distribution of the seperation between uncorrelated random variables, we would see something drastically different. In fact, we find that the separation is given by $p(s) = e^{-s}$ and we see that the random variables do <em>not</em> repel but rather attract.
-<img src="/wig_pois_sep.png" alt=""></p>
-<h1 id="summary">Summary</h1>
-<p>The idea that we can learn anything by studying random matrices may be quite surprising. At first glance it seems that there is not much to gain by studying a matrix made up of independent random variables. However, by studying the spectral properites of these matrices we find that there are correlations in the spectrum as a result of trading the description of an $N\times N$ matrix of random variables to a description using its $N$ eigenvalues. We have seen level repulsion as one example of many generic features that arise in correlated systems. In physics, the most interesting problems arise when the correlations between the particles are strong and often times random matrix theory finds its way into the description.</p>
-<p>The example above is based on the notes by <a href="https://arxiv.org/abs/1712.07903">Livan, Novaes, and Vivo</a></p>
+\end{equation}
+Upon substitution into Eq. $\eqref{eq:psfull}$ we obtain
+\begin{equation}
+p(s) = \int_{0}^{\infty} dr ~r\delta(s-r) \int_{0}^{2\pi} d\theta \int_{-\infty}^{\infty} d\psi ~e^{-\frac{1}{2}\left[\left(\frac{r\cos(\theta)+\psi}{2}\right)^2+\left(\frac{-r\cos(\theta)+\psi}{2}\right)^2+\frac{r^2\sin^2(\theta)}{2}\right]}
+\end{equation}
+\begin{equation}
+p(s) = \frac{s}{2}e^{-s^2 /4}
+\end{equation}
+We can rescale our result by the mean level spacing, $\langle s \rangle =
+\sqrt{\pi}$ and the final result is known as Wigner's Surmise:
+\begin{equation}
+p(s) = \frac{\pi s}{2}e^{-\frac{1}{4}\pi s^2}
+\label{eq:wigsur}
+\end{equation}
+From Eq. $\eqref{eq:wigsur}$ we see that the probability that two eigenvalues
+are either very close together or very far apart vanishes. This behavior is
+known as level repulsion and is a generic feature of correlated random
+variables. If we were to look at the probability distribution of the seperation
+between uncorrelated random variables, we would see something drastically
+different. In fact, we find that the separation is given by $p(s) = e^{-s}$ and
+we see that the random variables do <em>not</em> repel but rather attract.</p>
 
+    
+    
+    
+
+
+
+    <img src="https://gitabaz.github.io/blog/rmt-basics/wig_pois_sep.png" style="background-color:white;"/>
+
+<h1 id="summary">Summary<a class="zola-anchor" href="#summary" aria-label="Anchor link for: summary">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<p>The idea that we can learn anything by studying random matrices may be quite
+surprising. At first glance it seems that there is not much to gain by studying
+a matrix made up of independent random variables. However, by studying the
+spectral properites of these matrices we find that there are correlations in
+the spectrum as a result of trading the description of an $N\times N$ matrix of
+random variables to a description using its $N$ eigenvalues. We have seen level
+repulsion as one example of many generic features that arise in correlated
+systems. In physics, the most interesting problems arise when the correlations
+between the particles are strong and often times random matrix theory finds its
+way into the description.</p>
+<p>The example above is based on the notes by <a href="https://arxiv.org/abs/1712.07903">Livan, Novaes, and
+Vivo</a></p>
+
+    </div>
+    
+
+    
+</article>
+
+
+    <footer>
+        <p>
+            
+<span class="icon-text">
+  
+
+  
+
+  
+  <a href="https://github.com/gitabaz" aria-label="Open gitabaz GitHub" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-github fa-lg" aria-hidden="true" title="GitHub"></i>
+    </span>
+  </a>
+  
+
+  
+  <a href="https://www.linkedin.com/in/azabalo" aria-label="Open azabalo LinkedIn" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true" title="LinkedIn"></i>
+    </span>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a href="https://scholar.google.com/citations?user=RrJeRTkAAAAJ" aria-label="Open RrJeRTkAAAAJ Google Scholar" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-google-scholar fa-lg" aria-hidden="true" title="Google Scholar"></i>
+    </span>
+  </a>
+  
+
+  
+</span>
+
+        </p>
+        <p>
+            
+            
+        </p>
+    </footer>
 </div>
-
-<footer id="footer">
-</footer>
-
+</body>
+</html>
