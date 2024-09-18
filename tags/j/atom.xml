@@ -40,9 +40,10 @@ This led me down the rabbit hole of the APL world.&lt;&#x2F;p&gt;
 &lt;p&gt;APL begins with &lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Kenneth_E._Iverson&quot;&gt;Ken Iverson&lt;&#x2F;a&gt;
 who introduced it in the &#x27;60s as an executable mathematical notation. APL
 became immensely popular being one of the first languages to implement an
-interactive approach to programming through a REPL. In 1979, Iverson received
-the Turing award for his work on APL and gave a talk titled: &lt;a href=&quot;https:&#x2F;&#x2F;dl.acm.org&#x2F;doi&#x2F;pdf&#x2F;10.1145&#x2F;1283920.1283935&quot;&gt;&lt;em&gt;Notation as a
-Tool of Thought&lt;&#x2F;em&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+interactive approach to programming through a REPL and having excellent support
+for array and numerics. In 1979, Iverson received the Turing award for his work
+on APL and gave a talk titled: &lt;a href=&quot;https:&#x2F;&#x2F;dl.acm.org&#x2F;doi&#x2F;pdf&#x2F;10.1145&#x2F;1283920.1283935&quot;&gt;&lt;em&gt;Notation as a Tool of
+Thought&lt;&#x2F;em&gt;&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;In his talk, Iverson describes the importance of notation and language as tools
 of thought. He highlights two powerful notations: mathematical notation and
 programming languages. Mathematical notation allows its users to convey meaning
@@ -57,7 +58,7 @@ APL.&lt;&#x2F;p&gt;
 influenced by APL in some way. Some examples taken from Wikipedia:&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;Python: ABC, Ada, ALGOL 68, &lt;strong&gt;APL&lt;&#x2F;strong&gt;, C, C++, CLU, Dylan, Haskell, Icon,Lisp,Modula-3, Perl, Standard ML&lt;&#x2F;li&gt;
-&lt;li&gt;GO: C, Oberon-2, Limbo, Active Oberon, Pascal, Oberon, Smalltalk, Newsqueak, Modula-2, Alef, &lt;strong&gt;APL&lt;&#x2F;strong&gt;, BCPL, Modula, occam&lt;&#x2F;li&gt;
+&lt;li&gt;Go: C, Oberon-2, Limbo, Active Oberon, Pascal, Oberon, Smalltalk, Newsqueak, Modula-2, Alef, &lt;strong&gt;APL&lt;&#x2F;strong&gt;, BCPL, Modula, occam&lt;&#x2F;li&gt;
 &lt;li&gt;Matlab: &lt;strong&gt;APL&lt;&#x2F;strong&gt;, EISPACK, LINPACK, PL&#x2F;0, Speakeasy&lt;&#x2F;li&gt;
 &lt;li&gt;Wolfram Language: &lt;strong&gt;APL&lt;&#x2F;strong&gt;, C, C++, FORTRAN, Lisp, Pascal, Prolog, Schoonschip, Simula, Smalltalk, SMP&lt;&#x2F;li&gt;
 &lt;li&gt;S: C, &lt;strong&gt;APL&lt;&#x2F;strong&gt;, PPL, Fortran&lt;&#x2F;li&gt;
