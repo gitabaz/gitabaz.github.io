@@ -30,4 +30,48 @@ development.&lt;&#x2F;p&gt;
 </content>
         
     </entry>
+    <entry xml:lang="en">
+        <title>quickignore</title>
+        <published>2024-09-18T00:00:00+00:00</published>
+        <updated>2024-09-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://gitabaz.github.io/projects/quickignore/"/>
+        <id>https://gitabaz.github.io/projects/quickignore/</id>
+        
+        <content type="html" xml:base="https://gitabaz.github.io/projects/quickignore/">&lt;p&gt;Quickly generate &lt;code&gt;.gitignore&lt;&#x2F;code&gt; files for the chosen languages.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;features&quot;&gt;Features&lt;&#x2F;h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Over 500 templates included&lt;&#x2F;li&gt;
+&lt;li&gt;Ability to combine multiple templates together&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;example&quot;&gt;Example&lt;&#x2F;h1&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;$ quickignore --help
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Usage: quickignore &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;options...&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt; -t &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;languages&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-h, --help This help text
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-l, --list List languages with available templates
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-t, --template Generate .gitignore template for specified languages
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;-o, --output-file Specify output file (default .gitignore&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;To generate a .gitignore file in the current directory for a C and Java project simply run&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;$ quickignore -t c java
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Sample output&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Output file name: .gitignore
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Proceed? &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;y&#x2F;n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;: y
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;Generating template for languages:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;c ... done
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;java ... done
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;quickignore: completed
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+        
+    </entry>
 </feed>
