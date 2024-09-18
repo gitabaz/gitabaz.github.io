@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+
+    <title>Notation as a tool of thought - Zabalo</title>
+    <meta name="description" content="">
+
+    
+    <link rel="stylesheet" href="https://gitabaz.github.io/base.css">
+    <link rel="stylesheet" href="https://gitabaz.github.io/auto.css">
+
+    <link rel="preload" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css></noscript>
+
+    
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                tags: 'ams'
+            }
+        }
+    </script>
+    <script id="MathJax-script" async src=https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3&#x2F;es5&#x2F;tex-mml-chtml.js ></script>
+    
+
+    
+    
+    <meta property="og:title" content="Notation as a tool of thought">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="https://gitabaz.github.io/about/">
+    <meta property="article:published_time" content="2024-09-18T06:41:30-04:00">
+    
+    
+    <meta property="article:tag" content="math">
+    
+    <meta property="article:tag" content="notation">
+    
+    <meta property="article:tag" content="programming">
+    
+    <meta property="article:tag" content="apl">
+    
+    <meta property="article:tag" content="j">
+    
+    
+    
+    
+    <meta property="og:url" content="https://gitabaz.github.io/blog/notation-as-a-tool-of-thought/">
+    
+    
+
+
+    
+    
+</head>
+<body>
+<div class="container">
+    
+    
+    <header>
+        <h1 class="site-header">
+            <a href="https:&#x2F;&#x2F;gitabaz.github.io">Zabalo</a>
+        </h1>
+        <nav>
+            <ul>
+            
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;">Home</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;projects&#x2F;">Projects</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;blog&#x2F;">Blog</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;tags&#x2F;">Tags</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;about&#x2F;">About</a></li>
+            
+            
+            </ul>
+        </nav>
+    </header>
+    
+    
+
+<article class="post">
+    
+    
+    
+        
+        <header>
+            <h1>Notation as a tool of thought</h1>
+        </header>
+        
+    <div class="article-info">
+        
+        
+        <div class="article-date">September 18, 2024 ◦ 7 min ◦ </div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://gitabaz.github.io/tags/math/">#math</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/notation/">#notation</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/programming/">#programming</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/apl/">#apl</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/j/">#j</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    
+    
+    <div class="content">
+        <p>Some time ago, I came across a link to <a href="https://github.com/jsoftware/jsource/blob/master/jsrc/a.c">"unreadable" source
+code</a>. When I first
+looked at it, I was surprised that software was written in that form <em>without</em>
+the intent of obfuscation. As I dug deeper into the source, I found out this
+style of coding was known as <em>Whitney style</em>, named after <a href="https://en.wikipedia.org/wiki/Arthur_Whitney_(computer_scientist)">Arthur
+Whitney</a>.
+This led me down the rabbit hole of the APL world.</p>
+<h1 id="apl">APL<a class="zola-anchor" href="#apl" aria-label="Anchor link for: apl">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<p>APL begins with <a href="https://en.wikipedia.org/wiki/Kenneth_E._Iverson">Ken Iverson</a>
+who introduced it in the '60s as an executable mathematical notation. APL
+became immensely popular being one of the first languages to implement an
+interactive approach to programming through a REPL. In 1979, Iverson received
+the Turing award for his work on APL and gave a talk titled: <a href="https://dl.acm.org/doi/pdf/10.1145/1283920.1283935"><em>Notation as a
+Tool of Thought</em></a>.</p>
+<p>In his talk, Iverson describes the importance of notation and language as tools
+of thought. He highlights two powerful notations: mathematical notation and
+programming languages. Mathematical notation allows its users to convey meaning
+in a few symbols and manipulate the symbols to reason about the underlying
+problem. However, he notes that mathematical notation lacks universality and
+must be interpreted differently depending on the context. In contrast,
+programming languages are universal and unambiguous but they are not often used
+as tools of thought. He suggests to combine the advantages of mathematical
+notation with those of programming languages into a single coherent language:
+APL.</p>
+<p>Though relatively unknown, many popular languages used today have been
+influenced by APL in some way. Some examples taken from Wikipedia:</p>
+<ul>
+<li>Python: ABC, Ada, ALGOL 68, <strong>APL</strong>, C, C++, CLU, Dylan, Haskell, Icon,Lisp,Modula-3, Perl, Standard ML</li>
+<li>GO: C, Oberon-2, Limbo, Active Oberon, Pascal, Oberon, Smalltalk, Newsqueak, Modula-2, Alef, <strong>APL</strong>, BCPL, Modula, occam</li>
+<li>Matlab: <strong>APL</strong>, EISPACK, LINPACK, PL/0, Speakeasy</li>
+<li>Wolfram Language: <strong>APL</strong>, C, C++, FORTRAN, Lisp, Pascal, Prolog, Schoonschip, Simula, Smalltalk, SMP</li>
+<li>S: C, <strong>APL</strong>, PPL, Fortran</li>
+</ul>
+<h1 id="important-characteristics-of-notation">Important characteristics of notation<a class="zola-anchor" href="#important-characteristics-of-notation" aria-label="Anchor link for: important-characteristics-of-notation">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<p>When Iverson designed APL, he set aside a set of characteristics that would be
+important if it were to used as a tool of thought.</p>
+<ol>
+<li>Ease of expressing constructs arising in problems
+<ul>
+<li>Convenient expression not only of notions arising directly from a problem,
+but also of those arising in subsequent analysis, generalization, and
+specialization</li>
+</ul>
+</li>
+<li>Suggestivity
+<ul>
+<li>The forms of the expressions arising in one set of problems suggest related
+expressions which find application in other problems</li>
+</ul>
+</li>
+<li>Ability to subordinate detail
+<ul>
+<li>Brevity facilitates reasoning and is achieved by subordinating detail</li>
+</ul>
+</li>
+<li>Economy
+<ul>
+<li>Utility of a language as a tool of thought increases with the range of
+topics it can treat, but decreases with the amount of vocabulary and
+complexity of grammatical rules which the user has to keep in mind</li>
+</ul>
+</li>
+<li>Amenability to formal proofs
+<ul>
+<li>Formal proofs and derivations</li>
+</ul>
+</li>
+</ol>
+<p>In the following sections we will look at some basic syntax/concepts in APL and
+then use them to tackle a simple problem that illustrates how the above
+principles materialize when working with APL.</p>
+<h1 id="basics-of-apl">Basics of APL<a class="zola-anchor" href="#basics-of-apl" aria-label="Anchor link for: basics-of-apl">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<h2 id="functions">Functions<a class="zola-anchor" href="#functions" aria-label="Anchor link for: functions">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>In APL, there are a collection of built-in functions called primitives which
+are denoted by a symbol. Functions can either take 1 (monadic) or 2 (dyadic)
+arguments. In general, a function will take the form $\alpha f \omega$. If it
+is being used monadically, the left argument ($\alpha$) is omitted. For
+example, the function ÷</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>⍝ Dyadic ÷ performs division
+</span><span>    4 ÷ 2
+</span><span>2
+</span><span>⍝ Monadic ÷ performs the reciprocal
+</span><span>    ÷ 4
+</span><span>0.25
+</span></code></pre>
+<h2 id="some-more-apl">Some more APL<a class="zola-anchor" href="#some-more-apl" aria-label="Anchor link for: some-more-apl">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>APL is a simple language with a few rules making it easy to parse. It was,
+also, one of the first <em>array languages</em> where arrays are first class types
+that do not require any special handling. All functions can be naturally
+applied to arrays of any dimension.</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>⍝ No operator precedence, order of operations is right to left
+</span><span>	3 × 8 + 1
+</span><span>27
+</span><span>
+</span><span>⍝ The tally function: ≢ counts the elements in the array
+</span><span>	 ≢ 6 9 1
+</span><span>3
+</span><span>
+</span><span>⍝ A scalar + an array is distributed
+</span><span>	1 + 2 6 8 4
+</span><span>3 7 9 5
+</span><span>
+</span><span>⍝ An array + an array is summed element wise
+</span><span>	5 3 2 9 + 2 6 8 4
+</span><span>7 9 10 13
+</span><span>
+</span><span>⍝ The exponent function: *
+</span><span>	3 * 1 2 3
+</span><span>3 9 27
+</span></code></pre>
+<h2 id="operators">Operators<a class="zola-anchor" href="#operators" aria-label="Anchor link for: operators">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>One of the most important aspects of the language are operators - higher order
+functions that yield a derived function.</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>⍝ The reduce operator: / inserts the preceeding function between all elements
+</span><span>	+/ 21 45 18 27 11
+</span><span>122
+</span><span>
+</span><span>⍝ This is the same as above
+</span><span>	21 + 45 + 18 + 27 + 11
+</span><span>122
+</span><span>
+</span><span>⍝ Minus reduction: -/
+</span><span>	-/ 45 9 11 2 5
+</span><span>50
+</span><span>
+</span><span>⍝ This is the same as above. Careful with order of operations
+</span><span>	45 - (9 - (11 - (2 - 5)))
+</span><span>50
+</span></code></pre>
+<h2 id="apl-in-action">APL in action<a class="zola-anchor" href="#apl-in-action" aria-label="Anchor link for: apl-in-action">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>With the few examples shown above we can now illustrate what Iverson meant with
+APL as tool of thought. Consider an array $a$ and a function that computes the
+mean</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>    a ← 10 12 5
+</span><span>
+</span><span>    (+/a) ÷ (≢a)
+</span><span>9
+</span></code></pre>
+<p>Recall from above that <code>+/</code> sums the array, <code>≢</code> counts the elements in the
+array, and <code>÷</code> is division. So we are summing the array and dividing the number
+of elements, i.e., computing the arithmetic mean. Part of the power of APL as a
+notation is that it allows you to subordinate detail. We can, therefore, pull
+out the repeated $a$s and write the above as</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>    a ← 10 12 5
+</span><span>
+</span><span>    (+/ ÷ ≢) a
+</span><span>9
+</span></code></pre>
+<p>This allows us to define the function <code>arithmetic</code></p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>    arithmetic ← +/ ÷ ≢
+</span><span>    arithmetic a
+</span><span>9
+</span></code></pre>
+<p>In practice, this relabeling is unnecessary because:</p>
+<ol>
+<li><code>arithmetic</code> is more characters than the function itself</li>
+<li>It hides the details of how the function works. With more complicated
+functions we have access to details which may be important such as
+algorithm, computational complexity, etc.</li>
+</ol>
+<p>Let's continue instead with the bare definition of the arithmetic mean and see
+what else we can get. If we manipulate the symbols, something we might come up
+with is that a natural extension to sum (<code>+</code>) is times (<code>×</code>) e.g. how a log of
+a product is a sum of logs. Likewise, one might anticipate a natural extension
+of divide (<code>÷</code>) is root (<code>√</code>).</p>
+<p>*Note, these relationships were something that came
+to my mind when staring at the equations. It is not necessary for them to be
+grounded in any particular truth. The power of APL is that it allows one to
+free their mind to ponder relationships.*</p>
+<p>If we make the replacement <code>+/</code> $\rightarrow$ <code>×/</code> and <code>÷</code> $\rightarrow$ <code>√</code> we
+get</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>    ⍝ BEFORE: +/ ÷ ≢
+</span><span>    ×/ √ ≢
+</span></code></pre>
+<p>One way we might read this is, take the product of the array and root it by the
+number of elements. This is, precisely, the definition of the geometric mean.
+APL, however, does not have a built-in root function, but we can easily rewrite
+that by exponentiating to the reciprocal</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>    geometric ← ×/ * (÷≢)
+</span></code></pre>
+<p>If we write the two functions together, they look quite similar</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>    arithmetic ← +/ ÷ ≢
+</span><span>    geometric  ← ×/ * (÷≢)
+</span></code></pre>
+<p>Let's go back to our bare definition of the arithmetic mean and see how else we
+can manipulate the symbols. Previously, we looked at replacing them, but what
+if instead we rearrange them. One way to rearrange them is to swap the sum with
+the tally. In order to keep our units correct, rather than summing the raw
+elements we should sum their reciprocals. This gives</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>    ⍝ BEFORE: +/ ÷ ≢
+</span><span>    ≢ ÷ (+/ ÷)
+</span></code></pre>
+<p>One way we might read this is, count the number of elements and divide it by
+the sum of the reciprocals. This is,exactly, definition of the harmonic mean.</p>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>    arithmetic ← +/ ÷ ≢
+</span><span>    geometric  ← ×/ * (÷≢)
+</span><span>    harmonic   ← ≢ ÷ (+/ ÷)
+</span></code></pre>
+<h2 id="comparison-with-traditional-mathematical-notation">Comparison with traditional mathematical notation<a class="zola-anchor" href="#comparison-with-traditional-mathematical-notation" aria-label="Anchor link for: comparison-with-traditional-mathematical-notation">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p>We can put our APL expressions next to the traditional mathematical notation
+for comparison. Immediately, we see how compact and symmetric APL expressions
+are in comparison to the traditional notation.</p>
+<table><thead><tr><th style="text-align: center">Mean</th><th style="text-align: center">APL</th><th style="text-align: center">Mathematical notation</th></tr></thead><tbody>
+<tr><td style="text-align: center">Arithmetic</td><td style="text-align: center">+/ ÷ ≢</td><td style="text-align: center">$$\frac{1}{n}\sum_{i=1}^n x_i$$</td></tr>
+<tr><td style="text-align: center">Geometric</td><td style="text-align: center">×/ * (÷≢)</td><td style="text-align: center">$$\left(\prod_{i=1}^n x_i\right)^{\frac{1}{n}}$$</td></tr>
+<tr><td style="text-align: center">Harmonic</td><td style="text-align: center">≢ ÷ (+/ ÷)</td><td style="text-align: center">$$n\left(\sum_{i=1}^n\frac{1}{x_i}\right)^{-1}$$</td></tr>
+</tbody></table>
+<ol>
+<li>Able to express three different measures of central tendency (<em>Ease of expressing constructs arising in problems</em>)</li>
+<li>Able to generalize the arithmetic mean by manipulating symbols (<em>Suggestivity</em>)</li>
+<li>No need to carry around array, indices, etc. (<em>Ability to subordinate detail</em>)</li>
+<li>Only 6 symbols required to describe everything (<em>Economy</em>)</li>
+</ol>
+<h1 id="bonus">Bonus<a class="zola-anchor" href="#bonus" aria-label="Anchor link for: bonus">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<h2 id="full-collection-of-apl-symbols">Full collection of APL symbols<a class="zola-anchor" href="#full-collection-of-apl-symbols" aria-label="Anchor link for: full-collection-of-apl-symbols">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p><img src="https://gitabaz.github.io/blog/notation-as-a-tool-of-thought/full_apl.png" alt="" /></p>
+<h2 id="game-of-life">Game of life<a class="zola-anchor" href="#game-of-life" aria-label="Anchor link for: game-of-life">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<p><img src="https://gitabaz.github.io/blog/notation-as-a-tool-of-thought/apl_gol.gif" alt="" /></p>
+<ol>
+<li>Any live cell with 2 or 3 live neighbors survives.</li>
+<li>Any dead cell with 3 live neighbors becomes a live cell.</li>
+<li>All other live cells die in the next generation. Similarly, all other dead cells stay dead.</li>
+</ol>
+<pre data-lang="APL" style="background-color:#282828;color:#fdf4c1aa;" class="language-APL "><code class="language-APL" data-lang="APL"><span>    life ← {↑1 ⍵∨.∧3 4=+/,¯1 0 1∘.⊖¯1 0 1∘.⌽⊂⍵ }
+</span></code></pre>
+<h2 id="u-net-cnn">U-net CNN<a class="zola-anchor" href="#u-net-cnn" aria-label="Anchor link for: u-net-cnn">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h2>
+<table><thead><tr><th style="text-align: center">Diagram</th><th style="text-align: center">Implementation</th></tr></thead><tbody>
+<tr><td style="text-align: center"><img src="https://gitabaz.github.io/blog/notation-as-a-tool-of-thought/unet_fig.png" alt="" /></td><td style="text-align: center"><img src="https://gitabaz.github.io/blog/notation-as-a-tool-of-thought/unet_apl.png" alt="" /></td></tr>
+</tbody></table>
+<h1 id="references">References<a class="zola-anchor" href="#references" aria-label="Anchor link for: references">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<ol>
+<li><a href="https://dl.acm.org/doi/pdf/10.1145/1283920.1283935">Iverson, Kenneth E. "Notation as a tool of thought." ACM Turing award
+lectures. 2007. 1979.</a></li>
+<li><a href="https://aplwiki.com/wiki/John_Scholes%27_Conway%27s_Game_of_Life">APL Wiki - John Scholes' Conway's Game of
+Life</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Wikipedia - Conway’s Game of
+Life</a></li>
+<li><a href="https://www.dyalog.com/uploads/conference/dyalog22/presentations/D08_ICFP_Submission.pdf">Hsu, Aaron W., and Rodrigo Girão Serrão. "U-net CNN in APL."
+(2022).</a></li>
+<li><a href="https://tryapl.org/">Try APL!</a></li>
+</ol>
+
+    </div>
+    
+
+    
+</article>
+
+
+    <footer>
+        <p>
+            
+<span class="icon-text">
+  
+
+  
+
+  
+  <a href="https://github.com/gitabaz" aria-label="Open gitabaz GitHub" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-github fa-lg" aria-hidden="true" title="GitHub"></i>
+    </span>
+  </a>
+  
+
+  
+  <a href="https://www.linkedin.com/in/azabalo" aria-label="Open azabalo LinkedIn" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true" title="LinkedIn"></i>
+    </span>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a href="https://scholar.google.com/citations?user=RrJeRTkAAAAJ" aria-label="Open RrJeRTkAAAAJ Google Scholar" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-google-scholar fa-lg" aria-hidden="true" title="Google Scholar"></i>
+    </span>
+  </a>
+  
+
+  
+</span>
+
+        </p>
+        <p>
+            
+            
+        </p>
+    </footer>
+</div>
+</body>
+</html>

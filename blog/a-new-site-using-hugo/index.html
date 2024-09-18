@@ -135,10 +135,9 @@ I stumbled upon Hugo while browsing a random users github pages (I can't remembe
 </h2>
 <p>To setup Hugo, I basically followed the Install Hugo and Quick Start guides found <a href="https://gohugo.io/getting-started/">here</a>.</p>
 <p>I am currently running Ubuntu 19.04 so to install Hugo I simply download the .deb file from the <a href="https://github.com/gohugoio/hugo/releases">Hugo github</a> and got the latest version (currently v0.58.3). Once that was done I made a directory where I would store my Hugo websites and initiated a Hugo site.</p>
-<p>{{&lt; highlight bash "linenos=table,style=monokai" &gt;}}
-mkdir ~/sites
-hugo new site <SITENAME>
-{{&lt; /highlight &gt;}}</p>
+<pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">mkdir ~/sites
+</span><span style="color:#fdf4c1;">hugo new site </span><span style="color:#fe8019;">&lt;</span><span style="color:#fdf4c1;">SITENAME</span><span style="color:#fe8019;">&gt;
+</span></code></pre>
 <p>The next step on the guide was to install a theme. I chose to go with the basic <a href="https://github.com/budparr/gohugo-theme-ananke">Ananke</a>. In order to install, I initiated a git repository in my <em>~/sites/&lt;SITENAME&gt;</em> directory and added the theme as a <a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">submodule</a> in the <em>themes/ananke</em> directory. The submodule is a great way to include a third party project into your own project. Once the theme has been downloaded, tell hugo to use the theme by adding it to the <em>config.toml</em> file.</p>
 <pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fabd2f;">cd </span><span style="color:#fe8019;">&lt;</span><span style="color:#fdf4c1;">SITENAME</span><span style="color:#fe8019;">&gt;
 </span><span style="color:#fdf4c1;">git init
@@ -146,7 +145,6 @@ hugo new site <SITENAME>
 </span><span style="color:#fabd2f;">echo </span><span style="color:#b8bb26;">&#39;theme = &quot;ananke&quot;&#39; </span><span style="color:#fe8019;">&gt;&gt;</span><span style="color:#fdf4c1;"> config.toml
 </span></code></pre>
 <p>The next step is to add some content. This is easily done by running</p>
-<p>{{&lt; highlight bash "linenos=inline,style=monokai,linenostart=7" &gt;}}</p>
 <pre data-lang="bash" style="background-color:#282828;color:#fdf4c1aa;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#fdf4c1;">hugo new posts/</span><span style="color:#fe8019;">&lt;</span><span style="color:#fdf4c1;">POST-TITLE</span><span style="color:#fe8019;">&gt;</span><span style="color:#fdf4c1;">.md
 </span></code></pre>
 <p>Once the post is created, it'll have some default content that includes the post title, date created, and marks it as a draft. This can easily be edited using any text editor to include the content you like.

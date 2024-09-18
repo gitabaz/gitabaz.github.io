@@ -230,10 +230,9 @@ I stumbled upon Hugo while browsing a random users github pages (I can&#x27;t re
 &lt;&#x2F;h2&gt;
 &lt;p&gt;To setup Hugo, I basically followed the Install Hugo and Quick Start guides found &lt;a href=&quot;https:&#x2F;&#x2F;gohugo.io&#x2F;getting-started&#x2F;&quot;&gt;here&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;I am currently running Ubuntu 19.04 so to install Hugo I simply download the .deb file from the &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gohugoio&#x2F;hugo&#x2F;releases&quot;&gt;Hugo github&lt;&#x2F;a&gt; and got the latest version (currently v0.58.3). Once that was done I made a directory where I would store my Hugo websites and initiated a Hugo site.&lt;&#x2F;p&gt;
-&lt;p&gt;{{&amp;lt; highlight bash &quot;linenos=table,style=monokai&quot; &amp;gt;}}
-mkdir ~&#x2F;sites
-hugo new site &lt;SITENAME&gt;
-{{&amp;lt; &#x2F;highlight &amp;gt;}}&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;mkdir ~&#x2F;sites
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;hugo new site &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;SITENAME&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;The next step on the guide was to install a theme. I chose to go with the basic &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;budparr&#x2F;gohugo-theme-ananke&quot;&gt;Ananke&lt;&#x2F;a&gt;. In order to install, I initiated a git repository in my &lt;em&gt;~&#x2F;sites&#x2F;&amp;lt;SITENAME&amp;gt;&lt;&#x2F;em&gt; directory and added the theme as a &lt;a href=&quot;https:&#x2F;&#x2F;git-scm.com&#x2F;book&#x2F;en&#x2F;v2&#x2F;Git-Tools-Submodules&quot;&gt;submodule&lt;&#x2F;a&gt; in the &lt;em&gt;themes&#x2F;ananke&lt;&#x2F;em&gt; directory. The submodule is a great way to include a third party project into your own project. Once the theme has been downloaded, tell hugo to use the theme by adding it to the &lt;em&gt;config.toml&lt;&#x2F;em&gt; file.&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;cd &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;SITENAME&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;git init
@@ -241,7 +240,6 @@ hugo new site &lt;SITENAME&gt;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fabd2f;&quot;&gt;echo &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;#39;theme = &amp;quot;ananke&amp;quot;&amp;#39; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt; config.toml
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;The next step is to add some content. This is easily done by running&lt;&#x2F;p&gt;
-&lt;p&gt;{{&amp;lt; highlight bash &quot;linenos=inline,style=monokai,linenostart=7&quot; &amp;gt;}}&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;hugo new posts&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;POST-TITLE&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;.md
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Once the post is created, it&#x27;ll have some default content that includes the post title, date created, and marks it as a draft. This can easily be edited using any text editor to include the content you like.
