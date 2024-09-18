@@ -39,11 +39,18 @@
         <loc>https://gitabaz.github.io/categories/research/</loc>
     </url>
     <url>
+        <loc>https://gitabaz.github.io/categories/software/</loc>
+    </url>
+    <url>
         <loc>https://gitabaz.github.io/projects/</loc>
     </url>
     <url>
         <loc>https://gitabaz.github.io/projects/bcs-dynamics/</loc>
         <lastmod>2020-08-22</lastmod>
+    </url>
+    <url>
+        <loc>https://gitabaz.github.io/projects/olab0tv2/</loc>
+        <lastmod>2024-09-18</lastmod>
     </url>
     <url>
         <loc>https://gitabaz.github.io/projects/random-circuits/</loc>
