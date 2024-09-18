@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Zabalo - c</title>
+    <link rel="self" type="application/atom+xml" href="https://gitabaz.github.io/tags/c/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://gitabaz.github.io"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2024-09-18T00:00:00+00:00</updated>
+    <id>https://gitabaz.github.io/tags/c/atom.xml</id>
+    <entry xml:lang="en">
+        <title>olab0tv2</title>
+        <published>2024-09-18T00:00:00+00:00</published>
+        <updated>2024-09-18T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://gitabaz.github.io/projects/olab0tv2/"/>
+        <id>https://gitabaz.github.io/projects/olab0tv2/</id>
+        
+        <content type="html" xml:base="https://gitabaz.github.io/projects/olab0tv2/">&lt;p&gt;olab0tv2 is the second iteration of
+&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gitabaz&#x2F;olab0t&quot;&gt;olab0t&lt;&#x2F;a&gt;, a Twitch bot, that is rewritten in
+Zig from C. This is part of an effort to learn Zig as well as improve on the
+design and features of the original. See blog posts for details on the
+development.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
+</feed>
