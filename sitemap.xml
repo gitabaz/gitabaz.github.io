@@ -49,6 +49,10 @@
         <lastmod>2020-08-22</lastmod>
     </url>
     <url>
+        <loc>https://gitabaz.github.io/projects/bqn-twitch/</loc>
+        <lastmod>2025-07-04</lastmod>
+    </url>
+    <url>
         <loc>https://gitabaz.github.io/projects/olab0tv2/</loc>
         <lastmod>2024-09-18</lastmod>
     </url>
@@ -70,7 +74,13 @@
         <loc>https://gitabaz.github.io/tags/approximations/</loc>
     </url>
     <url>
+        <loc>https://gitabaz.github.io/tags/array/</loc>
+    </url>
+    <url>
         <loc>https://gitabaz.github.io/tags/bot/</loc>
+    </url>
+    <url>
+        <loc>https://gitabaz.github.io/tags/bqn/</loc>
     </url>
     <url>
         <loc>https://gitabaz.github.io/tags/c/</loc>
