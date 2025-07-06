@@ -22,9 +22,10 @@
         <link rel="alternate" type="text/html" href="https://gitabaz.github.io/projects/bqn-twitch/"/>
         <id>https://gitabaz.github.io/projects/bqn-twitch/</id>
         
-        <content type="html" xml:base="https://gitabaz.github.io/projects/bqn-twitch/">&lt;p&gt;A simple library for building basic twitch bots in BQN. The library relies on a
-C library as a simple socket wrapper (ssw) for POSIX sockets that handle the
-connection to the twitch irc server.&lt;&#x2F;p&gt;
+        <content type="html" xml:base="https://gitabaz.github.io/projects/bqn-twitch/">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gitabaz&#x2F;bqn-twitch&quot;&gt;bqn-twitch&lt;&#x2F;a&gt; is a simple library for
+building basic twitch bots in &lt;a href=&quot;https:&#x2F;&#x2F;mlochbaum.github.io&#x2F;BQN&#x2F;&quot;&gt;BQN&lt;&#x2F;a&gt;. The
+library relies on ssw (simple socket wrapper) - a basic C library for POSIX
+sockets that handles the connection to the twitch irc server.&lt;&#x2F;p&gt;
 </content>
         
     </entry>

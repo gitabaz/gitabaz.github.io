@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+
+    <title>olab0tv2 retrospective - Zabalo</title>
+    <meta name="description" content="">
+
+    
+    <link rel="stylesheet" href="https://gitabaz.github.io/base.css">
+    <link rel="stylesheet" href="https://gitabaz.github.io/auto.css">
+
+    <link rel="preload" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href=https:&#x2F;&#x2F;cdnjs.cloudflare.com&#x2F;ajax&#x2F;libs&#x2F;font-awesome&#x2F;6.6.0&#x2F;css&#x2F;all.min.css></noscript>
+
+    
+
+    
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                tags: 'ams'
+            }
+        }
+    </script>
+    <script id="MathJax-script" async src=https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;mathjax@3&#x2F;es5&#x2F;tex-mml-chtml.js ></script>
+    
+
+    
+    
+    <meta property="og:title" content="olab0tv2 retrospective">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="https://gitabaz.github.io/about/">
+    <meta property="article:published_time" content="2025-07-05">
+    
+    
+    <meta property="article:tag" content="olab0t">
+    
+    <meta property="article:tag" content="zig">
+    
+    <meta property="article:tag" content="retro">
+    
+    
+    
+    
+    <meta property="og:url" content="https://gitabaz.github.io/blog/olab0tv2-retro/">
+    
+    
+
+
+    
+    
+</head>
+<body>
+<div class="container">
+    
+    
+    <header>
+        <h1 class="site-header">
+            <a href="https:&#x2F;&#x2F;gitabaz.github.io">Zabalo</a>
+        </h1>
+        <nav>
+            <ul>
+            
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;">Home</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;projects&#x2F;">Projects</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;blog&#x2F;">Blog</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;tags&#x2F;">Tags</a></li>
+            
+                
+                <li><a  href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;about&#x2F;">About</a></li>
+            
+            
+            </ul>
+        </nav>
+    </header>
+    
+    
+
+<article class="post">
+    
+    
+    
+        
+        <header>
+            <h1>olab0tv2 retrospective</h1>
+        </header>
+        
+    <div class="article-info">
+        
+        
+        <div class="article-date">July  5, 2025 ◦ 6 min ◦ </div>
+        
+        <div class="article-taxonomies">
+            
+            
+                <ul class="article-tags">
+                    
+                    <li><a href="https://gitabaz.github.io/tags/olab0t/">#olab0t</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/zig/">#zig</a></li>
+                    
+                    <li><a href="https://gitabaz.github.io/tags/retro/">#retro</a></li>
+                    
+                </ul>
+            
+        </div>
+    </div>
+
+    
+    
+    <div class="content">
+        <p>I have been meaning to write about my experience working with
+<a href="https://ziglang.org/">Zig</a> to develop the <a href="https://gitabaz.github.io/projects/olab0tv2/">second
+iteration of olab0t</a> - my Twitch bot. This
+article was supposed to be done about a year ago but I completely forgot to
+write about it. Hopefully, I still remember most of the experience and pain
+points.</p>
+<p>The <a href="https://github.com/gitabaz/olab0t">original olab0t</a> was written in C but
+after learning about Zig several years ago and playing around with the language
+I wanted to improve and "modernize" the bot. Some of the features I wanted to
+add were:</p>
+<ul>
+<li>Connecting to the Twitch server using SSL</li>
+<li>Adding a sound whenever messages were received in the chat</li>
+<li>Adding !playlist and !motd commands</li>
+<li>Adding better support for command handling</li>
+</ul>
+<h1 id="setting-up-tls">Setting up TLS<a class="zola-anchor" href="#setting-up-tls" aria-label="Anchor link for: setting-up-tls">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<p>Zig makes it simple to interface with C libraries, so I originally planned to
+use <a href="https://github.com/openssl/openssl">OpenSSL</a> and write basic bindings to
+connect using SSL. I eventually abandoned this idea since it felt too much like
+writing in C and I wanted to have a Zig-focused experience. I tried using the
+TLS library from Zig std but it didn't support TLS 1.3 which was required for
+connecting to Twitch. I ended up finding a <a href="https://github.com/ianic/tls.zig">TLS
+library</a> written purely in Zig, supporting
+TLS 1.3, and seemingly kept up to date. To install the package I simply ran</p>
+<pre data-lang="sh" style="background-color:#282828;color:#fdf4c1aa;" class="language-sh "><code class="language-sh" data-lang="sh"><span style="color:#fdf4c1;">zig fetch --save git+https://github.com/ianic/tls.zig
+</span></code></pre>
+<p>which pulls the package and saves it to your <code>ZIG_GLOBAL_CACHE_DIR</code> (default
+location is <code>~/.cache/zig/</code>) and adds the following line to your <code>build.zig.zon</code></p>
+<pre data-lang="zig" style="background-color:#282828;color:#fdf4c1aa;" class="language-zig "><code class="language-zig" data-lang="zig"><span>.tls </span><span style="color:#fe8019;">=</span><span> .{
+</span><span>    .url </span><span style="color:#fe8019;">= </span><span style="color:#b8bb26;">&quot;git+https://github.com/ianic/tls.zig#1775eb4d27d7f2058ab569324a163f43496b0626&quot;</span><span>,
+</span><span>    .hash </span><span style="color:#fe8019;">= </span><span style="color:#b8bb26;">&quot;1220155274b6ddc0fcdf361e279efb66d60cb989eb71d4a01e963a061c96bb6995c9&quot;</span><span>,
+</span><span>},
+</span></code></pre>
+<p>In order to access it in your project, you also need to add a few lines to the
+<code>build.zig</code> such as</p>
+<pre data-lang="zig" style="background-color:#282828;color:#fdf4c1aa;" class="language-zig "><code class="language-zig" data-lang="zig"><span style="color:#fa5c4b;">const</span><span> tls </span><span style="color:#fe8019;">=</span><span> b.</span><span style="color:#fdf4c1;">dependency</span><span>(</span><span style="color:#b8bb26;">&quot;tls&quot;</span><span>, .{
+</span><span>    .target </span><span style="color:#fe8019;">=</span><span> target,
+</span><span>    .optimize </span><span style="color:#fe8019;">=</span><span> optimize,
+</span><span>});
+</span><span>exe.root_module.</span><span style="color:#fdf4c1;">addImport</span><span>(</span><span style="color:#b8bb26;">&quot;tls&quot;</span><span>, tls.</span><span style="color:#fdf4c1;">module</span><span>(</span><span style="color:#b8bb26;">&quot;tls&quot;</span><span>));
+</span></code></pre>
+<p>When all was said and done, it only took me a few tries to get the connection
+up and running. It was my first time working with TLS and certificates but the
+examples on Github were enough to get me started.</p>
+<h1 id="communicating-over-irc">Communicating over IRC<a class="zola-anchor" href="#communicating-over-irc" aria-label="Anchor link for: communicating-over-irc">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<p>With the connection set up, I turned to reading and writing to the stream. Zig
+makes it easy to read the IRC messages since they always end in <code>\r\n</code> and
+<a href="https://ziglang.org/documentation/0.14.1/std/#std.io.Reader">Readers</a> have
+<code>readUntilDelimeterAlloc</code>. In hindsight, I could have probably just set up a
+buffer and reused it with every read call but <code>alloc</code>-ing and <code>defer free</code>-ing
+is just too much fun. In a similar way,
+<a href="https://ziglang.org/documentation/0.14.1/std/#std.io.Writer">Writers</a> have
+<code>writeAll</code> which means we don't have to manually keep track of how many bytes
+we have sent in order to get the full message across.</p>
+<p>With Twitch, the IRC messages come in different types - each one containing
+different bits of extra information depending - making it tricky to parse. I
+tried to be fancy and build separate structs to hold the different message
+types and then combined them into a tagged union.</p>
+<pre data-lang="zig" style="background-color:#282828;color:#fdf4c1aa;" class="language-zig "><code class="language-zig" data-lang="zig"><span style="color:#fa5c4b;">pub const </span><span style="color:#8ec07c;">MsgType </span><span style="color:#fe8019;">= </span><span style="color:#fa5c4b;">enum </span><span>{
+</span><span>    ping,
+</span><span>    privmsg,
+</span><span>    user_state,
+</span><span>    other,
+</span><span>};
+</span><span>
+</span><span style="color:#fa5c4b;">pub const </span><span style="color:#8ec07c;">Msg </span><span style="color:#fe8019;">= </span><span style="color:#fa5c4b;">union</span><span>(MsgType) {
+</span><span>    </span><span style="color:#fdf4c1;">ping</span><span>: </span><span style="color:#fa5c4b;">PingMsg</span><span>,
+</span><span>    </span><span style="color:#fdf4c1;">privmsg</span><span>: </span><span style="color:#fa5c4b;">PrivMsg</span><span>,
+</span><span>    </span><span style="color:#fdf4c1;">user_state</span><span>: </span><span style="color:#fa5c4b;">UserStateMsg</span><span>,
+</span><span>    </span><span style="color:#fdf4c1;">other</span><span>: </span><span style="color:#fa5c4b;">bool</span><span>,
+</span><span>};
+</span></code></pre>
+<p>All incoming messages would then be a <code>Msg</code> but the <code>MsgType</code> tag would give it
+a particular set of fields and let me choose how to handle it. Identifying the
+message type required parsing the messages and that was a bit of a pain. It
+involved splitting of the full message into tokens using e.g.
+<code>std.mem.splitAny(u8, cur_msg[1..], " ");</code> and  <code>if</code> statements for string
+comparison e.g. <code>std.mem.eql(u8, msg_parts.command, "PING")</code>. Depending on the
+message type this would have to be repeated with different delimiters to
+extract specific fields. I only finished some of the message types and fields
+that I was interested in leaving the rest for some other time.</p>
+<h1 id="adding-sound">Adding sound<a class="zola-anchor" href="#adding-sound" aria-label="Anchor link for: adding-sound">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<p>To add sound to my project, it seemed like interfacing with C would be the
+simplest solution. I found a header only library called
+<a href="https://miniaud.io/">miniaudio</a> that could play a sound in a few lines</p>
+<pre data-lang="c" style="background-color:#282828;color:#fdf4c1aa;" class="language-c "><code class="language-c" data-lang="c"><span>ma_result result;
+</span><span>ma_engine engine;
+</span><span>result </span><span style="color:#fe8019;">= </span><span style="color:#fdf4c1;">ma_engine_init(</span><span style="color:#d3869b;">NULL</span><span style="color:#fdf4c1;">, </span><span style="color:#fe8019;">&amp;</span><span style="color:#fdf4c1;">engine)</span><span>;
+</span><span style="color:#fdf4c1;">ma_engine_play_sound(</span><span style="color:#fe8019;">&amp;</span><span style="color:#fdf4c1;">engine, argv[</span><span style="color:#d3869b;">1</span><span style="color:#fdf4c1;">], </span><span style="color:#d3869b;">NULL</span><span style="color:#fdf4c1;">)</span><span>;
+</span></code></pre>
+<p>In order to use miniaudio in the project, however, I had to take a few
+additional steps. Being header only, miniaudio requires you to specify a single
+C file where the implementation occurs - done by adding <code>#define MINIAUDIO_IMPLEMENTATION</code> - and then including the header file. Rather than
+spend time trying to work around this using the Zig build system, I just
+created a dummy C file with the required contents and used that in my Zig
+project through <code>@cImport</code>. To get everything working I had to update the
+<code>build.zig</code> with the lines</p>
+<pre data-lang="zig" style="background-color:#282828;color:#fdf4c1aa;" class="language-zig "><code class="language-zig" data-lang="zig"><span>exe.root_module.</span><span style="color:#fdf4c1;">addCSourceFile</span><span>(.{
+</span><span>    .file </span><span style="color:#fe8019;">=</span><span> b.</span><span style="color:#fdf4c1;">path</span><span>(</span><span style="color:#b8bb26;">&quot;./src/csrc/miniaudio_impl.c&quot;</span><span>),
+</span><span>    .flags </span><span style="color:#fe8019;">=</span><span> &amp;.{ </span><span style="color:#b8bb26;">&quot;-fno-sanitize=undefined&quot;</span><span>, </span><span style="color:#b8bb26;">&quot;-O2&quot; </span><span>},
+</span><span>});
+</span><span>exe.root_module.</span><span style="color:#fdf4c1;">addIncludePath</span><span>(b.</span><span style="color:#fdf4c1;">path</span><span>(</span><span style="color:#b8bb26;">&quot;./src/csrc&quot;</span><span>));
+</span><span>exe.</span><span style="color:#fdf4c1;">linkLibC</span><span>();
+</span></code></pre>
+<p>The compilation flag <code>-fno-sanitize=undefined</code> was important because without
+it, it would fail to build. By default, Zig compiles C code with strict
+settings to help uncover bugs. Unfortunately, it looks like miniaudio runs into
+some issues here due to some undefined behavior.</p>
+<h1 id="handling-commands">Handling commands<a class="zola-anchor" href="#handling-commands" aria-label="Anchor link for: handling-commands">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<p>I tried several ways to handle commands directly through Zig but I didn't like
+having to recompile the source code and restart the bot every time I added
+something new. Instead, I decided to call out to a python script whenever a
+command was called in the chat and pass the command and parameters as
+arguments. The script would then handle the command and make sure the user was
+allowed to execute the command (e.g. <code>!set motd</code> should only be executed by
+admin). The Zig program would capture stdout and send that as the response from
+olab0t. The basic skeleton of the code is</p>
+<pre data-lang="zig" style="background-color:#282828;color:#fdf4c1aa;" class="language-zig "><code class="language-zig" data-lang="zig"><span style="color:#fa5c4b;">const</span><span> argv </span><span style="color:#fe8019;">=</span><span> [</span><span style="color:#d3869b;">_</span><span>][]</span><span style="color:#fa5c4b;">const u8</span><span>{
+</span><span>    </span><span style="color:#b8bb26;">&quot;python3&quot;</span><span>,
+</span><span>    </span><span style="color:#b8bb26;">&quot;./commands/launch_command.py&quot;</span><span>,
+</span><span>    msg.user,
+</span><span>    cmd,
+</span><span>    it.</span><span style="color:#fdf4c1;">rest</span><span>(),
+</span><span>};
+</span><span>
+</span><span style="color:#fa5c4b;">const</span><span> proc </span><span style="color:#fe8019;">= </span><span style="color:#fa5c4b;">try</span><span> std.process.Child.</span><span style="color:#fdf4c1;">run</span><span>(.{
+</span><span>    .allocator </span><span style="color:#fe8019;">=</span><span> allocator,
+</span><span>    .argv </span><span style="color:#fe8019;">= &amp;</span><span>argv,
+</span><span>});
+</span><span>
+</span><span style="color:#fa5c4b;">const</span><span> full_msg </span><span style="color:#fe8019;">= </span><span style="color:#fa5c4b;">try</span><span> std.fmt.</span><span style="color:#fdf4c1;">allocPrint</span><span>(allocator, </span><span style="color:#b8bb26;">&quot;{s}&quot;</span><span>, .{proc.stdout});
+</span><span style="color:#fa5c4b;">defer</span><span> allocator.</span><span style="color:#fdf4c1;">free</span><span>(full_msg);
+</span><span>
+</span><span style="color:#fa5c4b;">try</span><span> twitch_client.</span><span style="color:#fdf4c1;">sendPRIVMSG</span><span>(allocator, msg.channel, full_msg);
+</span></code></pre>
+<p>Passing off the commands to python is great since I can take advantage of its
+large ecosystem. It makes it easy to interact with APIs to many services,
+utilize machine learning models or LLMs, or quickly hack together general
+purpose scripts. I have so many ideas for commands I want to implement.</p>
+<h1 id="summary">Summary<a class="zola-anchor" href="#summary" aria-label="Anchor link for: summary">
+    <svg class="zola-anchor-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+        <path fill-rule="evenodd"
+            d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z">
+        </path>
+    </svg>
+</a>
+</h1>
+<p>I really enjoyed working on the upgrade to the bot. I was able to fix/improve
+several issues from before and add many features that were missing. I took the
+opportunity to learn some more Zig and tried implementing new programming
+techniques. I still haven't found much use for <code>comptime</code> so I know there is
+much left to learn.</p>
+<p>Zig has enough features, interest from the community, and can easily fallback
+to C libraries when necessary which makes it great for new projects. There is a
+bit of a learning curve but the availability of documentation and tutorials are
+starting to improve. The challenge of an evolving language with potential
+breaking changes always needs to be considered but for a hobby project with
+simple requirements, like mine, these limitations didn't get in the way. If
+you're not afraid to spend some time troubleshooting, sifting through old
+documentation, and scavenging for examples I recommend giving Zig a try. It has
+all of the features you need, some of the ones you want, and none of the ones
+you don't.</p>
+
+    </div>
+    
+
+    
+</article>
+
+
+    <footer>
+        <p>
+            
+<span class="icon-text">
+  
+
+  
+
+  
+  <a href="https://github.com/gitabaz" aria-label="Open gitabaz GitHub" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-github fa-lg" aria-hidden="true" title="GitHub"></i>
+    </span>
+  </a>
+  
+
+  
+  <a href="https://www.linkedin.com/in/azabalo" aria-label="Open azabalo LinkedIn" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true" title="LinkedIn"></i>
+    </span>
+  </a>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <a href="https://scholar.google.com/citations?user=RrJeRTkAAAAJ" aria-label="Open RrJeRTkAAAAJ Google Scholar" target="_blank">
+    <span class="icon is-large">
+      <i class="fab fa-google-scholar fa-lg" aria-hidden="true" title="Google Scholar"></i>
+    </span>
+  </a>
+  
+
+  
+</span>
+
+        </p>
+        <p>
+            
+            
+        </p>
+    </footer>
+</div>
+</body>
+</html>

@@ -4,8 +4,218 @@
     <link rel="self" type="application/atom+xml" href="https://gitabaz.github.io/tags/zig/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://gitabaz.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2024-09-18T00:00:00+00:00</updated>
+    <updated>2025-07-05T00:00:00+00:00</updated>
     <id>https://gitabaz.github.io/tags/zig/atom.xml</id>
+    <entry xml:lang="en">
+        <title>olab0tv2 retrospective</title>
+        <published>2025-07-05T00:00:00+00:00</published>
+        <updated>2025-07-05T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://gitabaz.github.io/blog/olab0tv2-retro/"/>
+        <id>https://gitabaz.github.io/blog/olab0tv2-retro/</id>
+        
+        <content type="html" xml:base="https://gitabaz.github.io/blog/olab0tv2-retro/">&lt;p&gt;I have been meaning to write about my experience working with
+&lt;a href=&quot;https:&#x2F;&#x2F;ziglang.org&#x2F;&quot;&gt;Zig&lt;&#x2F;a&gt; to develop the &lt;a href=&quot;https:&#x2F;&#x2F;gitabaz.github.io&#x2F;projects&#x2F;olab0tv2&#x2F;&quot;&gt;second
+iteration of olab0t&lt;&#x2F;a&gt; - my Twitch bot. This
+article was supposed to be done about a year ago but I completely forgot to
+write about it. Hopefully, I still remember most of the experience and pain
+points.&lt;&#x2F;p&gt;
+&lt;p&gt;The &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gitabaz&#x2F;olab0t&quot;&gt;original olab0t&lt;&#x2F;a&gt; was written in C but
+after learning about Zig several years ago and playing around with the language
+I wanted to improve and &quot;modernize&quot; the bot. Some of the features I wanted to
+add were:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Connecting to the Twitch server using SSL&lt;&#x2F;li&gt;
+&lt;li&gt;Adding a sound whenever messages were received in the chat&lt;&#x2F;li&gt;
+&lt;li&gt;Adding !playlist and !motd commands&lt;&#x2F;li&gt;
+&lt;li&gt;Adding better support for command handling&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h1 id=&quot;setting-up-tls&quot;&gt;Setting up TLS&lt;a class=&quot;zola-anchor&quot; href=&quot;#setting-up-tls&quot; aria-label=&quot;Anchor link for: setting-up-tls&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;Zig makes it simple to interface with C libraries, so I originally planned to
+use &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;openssl&#x2F;openssl&quot;&gt;OpenSSL&lt;&#x2F;a&gt; and write basic bindings to
+connect using SSL. I eventually abandoned this idea since it felt too much like
+writing in C and I wanted to have a Zig-focused experience. I tried using the
+TLS library from Zig std but it didn&#x27;t support TLS 1.3 which was required for
+connecting to Twitch. I ended up finding a &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;ianic&#x2F;tls.zig&quot;&gt;TLS
+library&lt;&#x2F;a&gt; written purely in Zig, supporting
+TLS 1.3, and seemingly kept up to date. To install the package I simply ran&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;sh&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-sh &quot;&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;zig fetch --save git+https:&#x2F;&#x2F;github.com&#x2F;ianic&#x2F;tls.zig
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;which pulls the package and saves it to your &lt;code&gt;ZIG_GLOBAL_CACHE_DIR&lt;&#x2F;code&gt; (default
+location is &lt;code&gt;~&#x2F;.cache&#x2F;zig&#x2F;&lt;&#x2F;code&gt;) and adds the following line to your &lt;code&gt;build.zig.zon&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;zig&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-zig &quot;&gt;&lt;code class=&quot;language-zig&quot; data-lang=&quot;zig&quot;&gt;&lt;span&gt;.tls &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; .{
+&lt;&#x2F;span&gt;&lt;span&gt;    .url &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;git+https:&#x2F;&#x2F;github.com&#x2F;ianic&#x2F;tls.zig#1775eb4d27d7f2058ab569324a163f43496b0626&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    .hash &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;1220155274b6ddc0fcdf361e279efb66d60cb989eb71d4a01e963a061c96bb6995c9&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;},
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;In order to access it in your project, you also need to add a few lines to the
+&lt;code&gt;build.zig&lt;&#x2F;code&gt; such as&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;zig&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-zig &quot;&gt;&lt;code class=&quot;language-zig&quot; data-lang=&quot;zig&quot;&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; tls &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; b.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;dependency&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;tls&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, .{
+&lt;&#x2F;span&gt;&lt;span&gt;    .target &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; target,
+&lt;&#x2F;span&gt;&lt;span&gt;    .optimize &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; optimize,
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;span&gt;exe.root_module.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;addImport&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;tls&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, tls.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;module&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;tls&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;));
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;When all was said and done, it only took me a few tries to get the connection
+up and running. It was my first time working with TLS and certificates but the
+examples on Github were enough to get me started.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;communicating-over-irc&quot;&gt;Communicating over IRC&lt;a class=&quot;zola-anchor&quot; href=&quot;#communicating-over-irc&quot; aria-label=&quot;Anchor link for: communicating-over-irc&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;With the connection set up, I turned to reading and writing to the stream. Zig
+makes it easy to read the IRC messages since they always end in &lt;code&gt;\r\n&lt;&#x2F;code&gt; and
+&lt;a href=&quot;https:&#x2F;&#x2F;ziglang.org&#x2F;documentation&#x2F;0.14.1&#x2F;std&#x2F;#std.io.Reader&quot;&gt;Readers&lt;&#x2F;a&gt; have
+&lt;code&gt;readUntilDelimeterAlloc&lt;&#x2F;code&gt;. In hindsight, I could have probably just set up a
+buffer and reused it with every read call but &lt;code&gt;alloc&lt;&#x2F;code&gt;-ing and &lt;code&gt;defer free&lt;&#x2F;code&gt;-ing
+is just too much fun. In a similar way,
+&lt;a href=&quot;https:&#x2F;&#x2F;ziglang.org&#x2F;documentation&#x2F;0.14.1&#x2F;std&#x2F;#std.io.Writer&quot;&gt;Writers&lt;&#x2F;a&gt; have
+&lt;code&gt;writeAll&lt;&#x2F;code&gt; which means we don&#x27;t have to manually keep track of how many bytes
+we have sent in order to get the full message across.&lt;&#x2F;p&gt;
+&lt;p&gt;With Twitch, the IRC messages come in different types - each one containing
+different bits of extra information depending - making it tricky to parse. I
+tried to be fancy and build separate structs to hold the different message
+types and then combined them into a tagged union.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;zig&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-zig &quot;&gt;&lt;code class=&quot;language-zig&quot; data-lang=&quot;zig&quot;&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;pub const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;MsgType &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;enum &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    ping,
+&lt;&#x2F;span&gt;&lt;span&gt;    privmsg,
+&lt;&#x2F;span&gt;&lt;span&gt;    user_state,
+&lt;&#x2F;span&gt;&lt;span&gt;    other,
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;pub const &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8ec07c;&quot;&gt;Msg &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;union&lt;&#x2F;span&gt;&lt;span&gt;(MsgType) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;ping&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;PingMsg&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;privmsg&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;PrivMsg&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;user_state&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;UserStateMsg&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;other&lt;&#x2F;span&gt;&lt;span&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;bool&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;All incoming messages would then be a &lt;code&gt;Msg&lt;&#x2F;code&gt; but the &lt;code&gt;MsgType&lt;&#x2F;code&gt; tag would give it
+a particular set of fields and let me choose how to handle it. Identifying the
+message type required parsing the messages and that was a bit of a pain. It
+involved splitting of the full message into tokens using e.g.
+&lt;code&gt;std.mem.splitAny(u8, cur_msg[1..], &quot; &quot;);&lt;&#x2F;code&gt; and  &lt;code&gt;if&lt;&#x2F;code&gt; statements for string
+comparison e.g. &lt;code&gt;std.mem.eql(u8, msg_parts.command, &quot;PING&quot;)&lt;&#x2F;code&gt;. Depending on the
+message type this would have to be repeated with different delimiters to
+extract specific fields. I only finished some of the message types and fields
+that I was interested in leaving the rest for some other time.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;adding-sound&quot;&gt;Adding sound&lt;a class=&quot;zola-anchor&quot; href=&quot;#adding-sound&quot; aria-label=&quot;Anchor link for: adding-sound&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;To add sound to my project, it seemed like interfacing with C would be the
+simplest solution. I found a header only library called
+&lt;a href=&quot;https:&#x2F;&#x2F;miniaud.io&#x2F;&quot;&gt;miniaudio&lt;&#x2F;a&gt; that could play a sound in a few lines&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span&gt;ma_result result;
+&lt;&#x2F;span&gt;&lt;span&gt;ma_engine engine;
+&lt;&#x2F;span&gt;&lt;span&gt;result &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;ma_engine_init(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;NULL&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;engine)&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;ma_engine_play_sound(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;engine, argv[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;], &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;NULL&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;)&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;In order to use miniaudio in the project, however, I had to take a few
+additional steps. Being header only, miniaudio requires you to specify a single
+C file where the implementation occurs - done by adding &lt;code&gt;#define MINIAUDIO_IMPLEMENTATION&lt;&#x2F;code&gt; - and then including the header file. Rather than
+spend time trying to work around this using the Zig build system, I just
+created a dummy C file with the required contents and used that in my Zig
+project through &lt;code&gt;@cImport&lt;&#x2F;code&gt;. To get everything working I had to update the
+&lt;code&gt;build.zig&lt;&#x2F;code&gt; with the lines&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;zig&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-zig &quot;&gt;&lt;code class=&quot;language-zig&quot; data-lang=&quot;zig&quot;&gt;&lt;span&gt;exe.root_module.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;addCSourceFile&lt;&#x2F;span&gt;&lt;span&gt;(.{
+&lt;&#x2F;span&gt;&lt;span&gt;    .file &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; b.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;path&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;.&#x2F;src&#x2F;csrc&#x2F;miniaudio_impl.c&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;),
+&lt;&#x2F;span&gt;&lt;span&gt;    .flags &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; &amp;amp;.{ &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;-fno-sanitize=undefined&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;-O2&amp;quot; &lt;&#x2F;span&gt;&lt;span&gt;},
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;span&gt;exe.root_module.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;addIncludePath&lt;&#x2F;span&gt;&lt;span&gt;(b.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;path&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;.&#x2F;src&#x2F;csrc&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;));
+&lt;&#x2F;span&gt;&lt;span&gt;exe.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;linkLibC&lt;&#x2F;span&gt;&lt;span&gt;();
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The compilation flag &lt;code&gt;-fno-sanitize=undefined&lt;&#x2F;code&gt; was important because without
+it, it would fail to build. By default, Zig compiles C code with strict
+settings to help uncover bugs. Unfortunately, it looks like miniaudio runs into
+some issues here due to some undefined behavior.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;handling-commands&quot;&gt;Handling commands&lt;a class=&quot;zola-anchor&quot; href=&quot;#handling-commands&quot; aria-label=&quot;Anchor link for: handling-commands&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;I tried several ways to handle commands directly through Zig but I didn&#x27;t like
+having to recompile the source code and restart the bot every time I added
+something new. Instead, I decided to call out to a python script whenever a
+command was called in the chat and pass the command and parameters as
+arguments. The script would then handle the command and make sure the user was
+allowed to execute the command (e.g. &lt;code&gt;!set motd&lt;&#x2F;code&gt; should only be executed by
+admin). The Zig program would capture stdout and send that as the response from
+olab0t. The basic skeleton of the code is&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;zig&quot; style=&quot;background-color:#282828;color:#fdf4c1aa;&quot; class=&quot;language-zig &quot;&gt;&lt;code class=&quot;language-zig&quot; data-lang=&quot;zig&quot;&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; argv &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d3869b;&quot;&gt;_&lt;&#x2F;span&gt;&lt;span&gt;][]&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;const u8&lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;python3&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;.&#x2F;commands&#x2F;launch_command.py&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;,
+&lt;&#x2F;span&gt;&lt;span&gt;    msg.user,
+&lt;&#x2F;span&gt;&lt;span&gt;    cmd,
+&lt;&#x2F;span&gt;&lt;span&gt;    it.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;rest&lt;&#x2F;span&gt;&lt;span&gt;(),
+&lt;&#x2F;span&gt;&lt;span&gt;};
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; proc &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt; std.process.Child.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span&gt;(.{
+&lt;&#x2F;span&gt;&lt;span&gt;    .allocator &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span&gt; allocator,
+&lt;&#x2F;span&gt;&lt;span&gt;    .argv &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;= &amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;argv,
+&lt;&#x2F;span&gt;&lt;span&gt;});
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;const&lt;&#x2F;span&gt;&lt;span&gt; full_msg &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fe8019;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt; std.fmt.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;allocPrint&lt;&#x2F;span&gt;&lt;span&gt;(allocator, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b8bb26;&quot;&gt;&amp;quot;{s}&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, .{proc.stdout});
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;defer&lt;&#x2F;span&gt;&lt;span&gt; allocator.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;free&lt;&#x2F;span&gt;&lt;span&gt;(full_msg);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fa5c4b;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt; twitch_client.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#fdf4c1;&quot;&gt;sendPRIVMSG&lt;&#x2F;span&gt;&lt;span&gt;(allocator, msg.channel, full_msg);
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Passing off the commands to python is great since I can take advantage of its
+large ecosystem. It makes it easy to interact with APIs to many services,
+utilize machine learning models or LLMs, or quickly hack together general
+purpose scripts. I have so many ideas for commands I want to implement.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;summary&quot;&gt;Summary&lt;a class=&quot;zola-anchor&quot; href=&quot;#summary&quot; aria-label=&quot;Anchor link for: summary&quot;&gt;
+    &lt;svg class=&quot;zola-anchor-link&quot; viewBox=&quot;0 0 16 16&quot; version=&quot;1.1&quot; width=&quot;16&quot; height=&quot;16&quot; aria-hidden=&quot;true&quot;&gt;
+        &lt;path fill-rule=&quot;evenodd&quot;
+            d=&quot;M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z&quot;&gt;
+        &lt;&#x2F;path&gt;
+    &lt;&#x2F;svg&gt;
+&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;I really enjoyed working on the upgrade to the bot. I was able to fix&#x2F;improve
+several issues from before and add many features that were missing. I took the
+opportunity to learn some more Zig and tried implementing new programming
+techniques. I still haven&#x27;t found much use for &lt;code&gt;comptime&lt;&#x2F;code&gt; so I know there is
+much left to learn.&lt;&#x2F;p&gt;
+&lt;p&gt;Zig has enough features, interest from the community, and can easily fallback
+to C libraries when necessary which makes it great for new projects. There is a
+bit of a learning curve but the availability of documentation and tutorials are
+starting to improve. The challenge of an evolving language with potential
+breaking changes always needs to be considered but for a hobby project with
+simple requirements, like mine, these limitations didn&#x27;t get in the way. If
+you&#x27;re not afraid to spend some time troubleshooting, sifting through old
+documentation, and scavenging for examples I recommend giving Zig a try. It has
+all of the features you need, some of the ones you want, and none of the ones
+you don&#x27;t.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>olab0tv2</title>
         <published>2024-09-18T00:00:00+00:00</published>

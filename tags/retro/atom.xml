@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-    <title>Zabalo - olab0t</title>
-    <link rel="self" type="application/atom+xml" href="https://gitabaz.github.io/tags/olab0t/atom.xml"/>
+    <title>Zabalo - retro</title>
+    <link rel="self" type="application/atom+xml" href="https://gitabaz.github.io/tags/retro/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://gitabaz.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
     <updated>2025-07-05T00:00:00+00:00</updated>
-    <id>https://gitabaz.github.io/tags/olab0t/atom.xml</id>
+    <id>https://gitabaz.github.io/tags/retro/atom.xml</id>
     <entry xml:lang="en">
         <title>olab0tv2 retrospective</title>
         <published>2025-07-05T00:00:00+00:00</published>
@@ -213,30 +213,6 @@ you&#x27;re not afraid to spend some time troubleshooting, sifting through old
 documentation, and scavenging for examples I recommend giving Zig a try. It has
 all of the features you need, some of the ones you want, and none of the ones
 you don&#x27;t.&lt;&#x2F;p&gt;
-</content>
-        
-    </entry>
-    <entry xml:lang="en">
-        <title>olab0tv2</title>
-        <published>2024-09-18T00:00:00+00:00</published>
-        <updated>2024-09-18T00:00:00+00:00</updated>
-        
-        <author>
-          <name>
-            
-              Unknown
-            
-          </name>
-        </author>
-        
-        <link rel="alternate" type="text/html" href="https://gitabaz.github.io/projects/olab0tv2/"/>
-        <id>https://gitabaz.github.io/projects/olab0tv2/</id>
-        
-        <content type="html" xml:base="https://gitabaz.github.io/projects/olab0tv2/">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gitabaz&#x2F;olab0tv2&quot;&gt;olab0tv2&lt;&#x2F;a&gt; is the second iteration of
-&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;gitabaz&#x2F;olab0t&quot;&gt;olab0t&lt;&#x2F;a&gt;, a Twitch bot, that is rewritten in
-Zig from C. This is part of an effort to learn Zig as well as improve on the
-design and features of the original. See blog posts for details on the
-development.&lt;&#x2F;p&gt;
 </content>
         
     </entry>
