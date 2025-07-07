@@ -4,8 +4,63 @@
     <link rel="self" type="application/atom+xml" href="https://gitabaz.github.io/tags/programming/atom.xml"/>
     <link rel="alternate" type="text/html" href="https://gitabaz.github.io"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2024-09-18T06:41:30-04:00</updated>
+    <updated>2025-07-05T20:28:38-04:00</updated>
     <id>https://gitabaz.github.io/tags/programming/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Zig: C with intent</title>
+        <published>2025-07-05T20:28:38-04:00</published>
+        <updated>2025-07-05T20:28:38-04:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://gitabaz.github.io/blog/zig-c-with-intent/"/>
+        <id>https://gitabaz.github.io/blog/zig-c-with-intent/</id>
+        
+        <content type="html" xml:base="https://gitabaz.github.io/blog/zig-c-with-intent/">&lt;p&gt;In online discussions, I often come across criticisms of Zig as a modern
+replacement to C. The issues mentioned typically contain references to other
+languages like Rust, C++, and even C itself as reasons to not bother switching
+to Zig. I won&#x27;t go into the details of these discussions because I take a more
+simplistic view of Zig. I view Zig as C with intent, i.e., a language that
+improves on C by allowing the programmer to clearly express their intent using
+the language constructs. The goal of Zig is not to introduce complexity to
+remove the dangers of C but to clarify the ambiguity within C such that these
+issues do not manifest. A large part of this is due to its philosophy of:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;No hidden control flow.&lt;&#x2F;li&gt;
+&lt;li&gt;No hidden memory allocations.&lt;&#x2F;li&gt;
+&lt;li&gt;No preprocessor, no macros.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Some examples are:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;slices for working with constrained parts of memory&lt;&#x2F;li&gt;
+&lt;li&gt;explicit allocators for specific use cases (e.g. arena, fixed buffer, leak detection, etc.)&lt;&#x2F;li&gt;
+&lt;li&gt;defer for cleaning up resources not required at end of scope&lt;&#x2F;li&gt;
+&lt;li&gt;error union types for handling errors or bubbling them up&lt;&#x2F;li&gt;
+&lt;li&gt;tagged unions to specify which field is active&lt;&#x2F;li&gt;
+&lt;li&gt;optional and null types to indicate when data is ready to be accessed&lt;&#x2F;li&gt;
+&lt;li&gt;comptime to guarantee code is ran at compile time (e.g. for implementing generics)&lt;&#x2F;li&gt;
+&lt;li&gt;easy C interop to leverage C&#x27;s ecosystem through a safe wrapper&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Many of these features are implemented in some way or another in the previously
+mentioned languages (some even enforce additional safety practices), but Zig
+keeps these features simple and accessible - and that makes all the difference.
+With simple syntax and low overhead, the developer is forced into writing robust
+code and the reviewer is able to accurately reason its intended behavior. This
+goes a long way in helping build safer systems.&lt;&#x2F;p&gt;
+&lt;p&gt;As a bonus, Zig also has a &quot;modern&quot; standard library where many common data
+structures and networking utilities are available. It also includes a powerful
+build system that minimizes the effort required for packaging and distribution
+and simplifies cross compilation. Zig is a step up from C in all the right
+places.&lt;&#x2F;p&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Notation as a tool of thought</title>
         <published>2024-09-18T06:41:30-04:00</published>

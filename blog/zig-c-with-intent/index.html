@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer-when-downgrade">
 
-    <title>Tag: #c - Zabalo</title>
+    <title>Zig: C with intent - Zabalo</title>
     <meta name="description" content="">
 
     
@@ -31,9 +31,27 @@
     
 
     
-    <meta property="og:title" content="Zabalo">
-    <meta property="og:type" content="website">
     
+    <meta property="og:title" content="Zig: C with intent">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="https://gitabaz.github.io/about/">
+    <meta property="article:published_time" content="2025-07-05T20:28:38-04:00">
+    
+    
+    <meta property="article:tag" content="zig">
+    
+    <meta property="article:tag" content="c">
+    
+    <meta property="article:tag" content="programming">
+    
+    
+    
+    
+    <meta property="og:url" content="https://gitabaz.github.io/blog/zig-c-with-intent/">
+    
+    
+
 
     
     
@@ -71,24 +89,15 @@
     </header>
     
     
-<h1>Tag: #c</h1>
-<div class="article-info">
-    <a href="../">To all tags</a>
-</div>
 
-
-
-    <article class="post-list">
-        <a href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;blog&#x2F;zig-c-with-intent&#x2F;">
-            <header>
-                <h3>
-                    Zig: C with intent
-                </h3>
-            </header>
-
-            
-        </a>
- 
+<article class="post">
+    
+    
+    
+        
+        <header>
+            <h1>Zig: C with intent</h1>
+        </header>
         
     <div class="article-info">
         
@@ -111,97 +120,51 @@
         </div>
     </div>
 
-    </article>
+    
+    
+    <div class="content">
+        <p>In online discussions, I often come across criticisms of Zig as a modern
+replacement to C. The issues mentioned typically contain references to other
+languages like Rust, C++, and even C itself as reasons to not bother switching
+to Zig. I won't go into the details of these discussions because I take a more
+simplistic view of Zig. I view Zig as C with intent, i.e., a language that
+improves on C by allowing the programmer to clearly express their intent using
+the language constructs. The goal of Zig is not to introduce complexity to
+remove the dangers of C but to clarify the ambiguity within C such that these
+issues do not manifest. A large part of this is due to its philosophy of:</p>
+<ul>
+<li>No hidden control flow.</li>
+<li>No hidden memory allocations.</li>
+<li>No preprocessor, no macros.</li>
+</ul>
+<p>Some examples are:</p>
+<ul>
+<li>slices for working with constrained parts of memory</li>
+<li>explicit allocators for specific use cases (e.g. arena, fixed buffer, leak detection, etc.)</li>
+<li>defer for cleaning up resources not required at end of scope</li>
+<li>error union types for handling errors or bubbling them up</li>
+<li>tagged unions to specify which field is active</li>
+<li>optional and null types to indicate when data is ready to be accessed</li>
+<li>comptime to guarantee code is ran at compile time (e.g. for implementing generics)</li>
+<li>easy C interop to leverage C's ecosystem through a safe wrapper</li>
+</ul>
+<p>Many of these features are implemented in some way or another in the previously
+mentioned languages (some even enforce additional safety practices), but Zig
+keeps these features simple and accessible - and that makes all the difference.
+With simple syntax and low overhead, the developer is forced into writing robust
+code and the reviewer is able to accurately reason its intended behavior. This
+goes a long way in helping build safer systems.</p>
+<p>As a bonus, Zig also has a "modern" standard library where many common data
+structures and networking utilities are available. It also includes a powerful
+build system that minimizes the effort required for packaging and distribution
+and simplifies cross compilation. Zig is a step up from C in all the right
+places.</p>
 
-
-
-    <article class="post-list">
-        <a href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;projects&#x2F;olab0tv2&#x2F;">
-            <header>
-                <h3>
-                    olab0tv2
-                </h3>
-            </header>
-
-            
-        </a>
- 
-        
-    <div class="article-info">
-        
-        
-        <div class="article-date">September 18, 2024 ◦ 1 min ◦ </div>
-        
-        <div class="article-taxonomies">
-            
-                <ul class="article-categories">
-                    
-                    <li><a href="https://gitabaz.github.io/categories/software/">software</a></li>
-                    
-                </ul>
-            
-            
-                <ul class="article-tags">
-                    
-                    <li><a href="https://gitabaz.github.io/tags/zig/">#zig</a></li>
-                    
-                    <li><a href="https://gitabaz.github.io/tags/twitch/">#twitch</a></li>
-                    
-                    <li><a href="https://gitabaz.github.io/tags/bot/">#bot</a></li>
-                    
-                    <li><a href="https://gitabaz.github.io/tags/c/">#c</a></li>
-                    
-                    <li><a href="https://gitabaz.github.io/tags/olab0t/">#olab0t</a></li>
-                    
-                </ul>
-            
-        </div>
     </div>
+    
 
-    </article>
-
-
-
-    <article class="post-list">
-        <a href="https:&#x2F;&#x2F;gitabaz.github.io&#x2F;projects&#x2F;quickignore&#x2F;">
-            <header>
-                <h3>
-                    quickignore
-                </h3>
-            </header>
-
-            
-        </a>
- 
-        
-    <div class="article-info">
-        
-        
-        <div class="article-date">July 26, 2020 ◦ 1 min ◦ </div>
-        
-        <div class="article-taxonomies">
-            
-                <ul class="article-categories">
-                    
-                    <li><a href="https://gitabaz.github.io/categories/software/">software</a></li>
-                    
-                </ul>
-            
-            
-                <ul class="article-tags">
-                    
-                    <li><a href="https://gitabaz.github.io/tags/c/">#c</a></li>
-                    
-                    <li><a href="https://gitabaz.github.io/tags/git/">#git</a></li>
-                    
-                </ul>
-            
-        </div>
-    </div>
-
-    </article>
-
-
+    
+</article>
 
 
     <footer>
