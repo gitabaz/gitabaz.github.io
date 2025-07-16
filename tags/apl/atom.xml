@@ -26,6 +26,7 @@
 building basic twitch bots in &lt;a href=&quot;https:&#x2F;&#x2F;mlochbaum.github.io&#x2F;BQN&#x2F;&quot;&gt;BQN&lt;&#x2F;a&gt;. The
 library relies on ssw (simple socket wrapper) - a basic C library for POSIX
 sockets that handles the connection to the twitch irc server.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;asciinema.org&#x2F;a&#x2F;ovXfsYy4khtlcOqhTlvmoWrMJ&quot;&gt;&lt;img src=&quot;https:&#x2F;&#x2F;asciinema.org&#x2F;a&#x2F;ovXfsYy4khtlcOqhTlvmoWrMJ.svg&quot; alt=&quot;asciicast&quot; &#x2F;&gt;&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 </content>
         
     </entry>
